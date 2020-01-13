@@ -3,5 +3,5 @@
 
 --loops through 10 times and prints the team number
 for i=1,10 do 
-    print("Interation: " .. i .. ", Team Number: 5") 
+    print("Iteration: " .. i .. ", Team Number: 5") 
 end
