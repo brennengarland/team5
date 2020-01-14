@@ -56,17 +56,17 @@ o:	$(ALL_O)
 a:	$(ALL_A)
 
 liblua: $(BASE_O)
-	$(AR) $@ $(BASE_O)
-	$(RANLIB) $@
+	$(AR) liblua.a $(BASE_O)
+	$(RANLIB) liblua.a
 
-lua: $(LUA_O) liblua
-	$(CC) -o $@ $(LDFLAGS) $(LUA_O) liblua $(LIBS)
+lua: $(LUA_O) $(liblua)
+	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(liblua) $(LIBS)
 
-luac: $(LUAC_O) liblua
-	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) liblua $(LIBS)
+luac: $(LUAC_O) $(liblua)
+	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(liblua) $(LIBS)
 
 clean:
-	$(RM) $(ALL_T) $(ALL_O)
+	$(RM) $(ALL_T) $(ALL_O) *.a
 
 depend:
 	@$(CC) $(CFLAGS) -MM l*.c
