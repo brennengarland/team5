@@ -66,7 +66,7 @@ luac: $(LUAC_O) liblua
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) liblua $(LIBS)
 
 clean:
-	$(RM) $(ALL_T) $(ALL_O)
+	$(RM) $(ALL_T) $(ALL_O) *.out
 
 depend:
 	@$(CC) $(CFLAGS) -MM l*.c
