@@ -11,8 +11,10 @@ RM= rm -f
 SYSCFLAGS= "-DLUA_USE_LINUX"
 SYSLDFLAGS=
 SYSLIBS= "-Wl,-E -ldl -lreadline"
+#SYSLIBS= "-Wl, -ldl -lreadline"
 
 MYCFLAGS=
+#MYLDFLAGS= "-lncurses" 
 MYLDFLAGS=
 MYLIBS=
 MYOBJS=
@@ -32,6 +34,7 @@ liblua.a: $(BASE_O)
 
 lua: lua.o liblua.a
 	gcc -std=gnu99 -o $@ $(LDFLAGS) lua.o liblua.a $(LIBS)
+
 
 luac: luac.o liblua.a
 	gcc -o $@ $(LDFLAGS) luac.o liblua.a $(LIBS)
@@ -102,3 +105,6 @@ lvm.o: lvm.c lprefix.h lua.h luaconf.h ldebug.h lstate.h lobject.h \
  ltable.h lvm.h
 lzio.o: lzio.c lprefix.h lua.h luaconf.h llimits.h lmem.h lstate.h \
  lobject.h ltm.h lzio.h
+
+clean:
+	rm *.o lua53 luac53
