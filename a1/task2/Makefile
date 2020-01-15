@@ -45,7 +45,7 @@ ALL_A= liblua
 # Targets start here.
 # make the targets with our platform settings
 default: $(PLAT)
-# Make everythin
+# Make everything
 all:	$(ALL_T)
 # Make all of our .o files
 o:	$(ALL_O)
@@ -58,12 +58,12 @@ liblua: $(BASE_O)
 	$(RANLIB) liblua.a
 
 # Make the lua executable
-lua: $(LUA_O) $(liblua)
-	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(liblua) $(LIBS)
+lua: $(LUA_O) liblua
+	$(CC) -o $@ $(LDFLAGS) $(LUA_O) liblua.a $(LIBS)
 
 # Make the lua compiler
-luac: $(LUAC_O) $(liblua)
-	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(liblua) $(LIBS)
+luac: $(LUAC_O) liblua
+	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) liblua.a $(LIBS)
 
 # Clean the results of our makefile
 clean:
