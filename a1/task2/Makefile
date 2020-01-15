@@ -8,6 +8,7 @@ LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
 # Libraries
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
+#local variables
 AR= ar rcu
 RANLIB= ranlib
 RM= rm -f
