@@ -1,14 +1,11 @@
-# Makefile for building Lua
-# See ../doc/readme.html for installation and customization instructions.
-
-# == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
-
 # Your platform. See PLATS for possible values.
 PLAT= linux
-
+# Compiler specifications
 CC= gcc -std=gnu99
+# Compiler flags
 CFLAGS= -O2 -Wall -Wextra -DLUA_COMPAT_5_2 $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
+# Libraries
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
 AR= ar rcu
@@ -26,9 +23,11 @@ MYOBJS=
 
 # == END OF USER SETTINGS -- NO NEED TO CHANGE ANYTHING BELOW THIS LINE =======
 liblua=	liblua.a
+# Files needed for the lua core
 CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o \
 	lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o \
 	ltm.o lundump.o lvm.o lzio.o
+# Files needed for the library
 LIB_O=	lauxlib.o lbaselib.o lbitlib.o lcorolib.o ldblib.o liolib.o \
 	lmathlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o loadlib.o linit.o
 BASE_O= $(CORE_O) $(LIB_O) $(MYOBJS)
@@ -44,36 +43,41 @@ ALL_T= liblua lua luac
 ALL_A= liblua
 
 # Targets start here.
+# make the targets with our platform settings
 default: $(PLAT)
-
+# Make everythin
 all:	$(ALL_T)
-
+# Make all of our .o files
 o:	$(ALL_O)
-
+# Make all of our static libraries
 a:	$(ALL_A)
 
+# Make the static linking library liblua.a
 liblua: $(BASE_O)
 	$(AR) liblua.a $(BASE_O)
 	$(RANLIB) liblua.a
 
+# Make the lua executable
 lua: $(LUA_O) $(liblua)
 	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(liblua) $(LIBS)
 
+# Make the lua compiler
 luac: $(LUAC_O) $(liblua)
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(liblua) $(LIBS)
 
+# Clean the results of our makefile
 clean:
 	$(RM) $(ALL_T) $(ALL_O) *.a
 
 depend:
 	@$(CC) $(CFLAGS) -MM l*.c
 
-# Convenience targets for popular platforms
+# Make the every thinkg with our platform specifications
 linux:
-	$(MAKE) all SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
+	$(MAKE) all SYSCFLAGS="-DLUA_USE_LINUX" SYSLBS="-Wl,-E -ldl -lreadline"
 
 # DO NOT DELETE
-
+# Dependencies for each of the files
 lapi.o: lapi.c lprefix.h lua.h luaconf.h lapi.h llimits.h lstate.h \
  lobject.h ltm.h lzio.h lmem.h ldebug.h ldo.h lfunc.h lgc.h lstring.h \
  ltable.h lundump.h lvm.h
