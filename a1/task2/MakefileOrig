@@ -54,17 +54,17 @@ o:	$(ALL_O)
 a:	$(ALL_A)
 
 # Make the static linking library liblua.a
-liblua: liblua.o
-	ar rcu liblua.a liblua.o
-	ranlib liblua.a
+liblua: $(BASE_O)
+	$(AR) liblua.a $(BASE_O)
+	$(RANLIB) liblua.a
 
 # Make the lua executable
 lua: $(LUA_O) liblua
 	$(CC) -o $@ $(LDFLAGS) $(LUA_O) liblua.a $(LIBS)
 
 # Make the lua compiler
-luac: liblua luac.c lprefix.h lua.h luaconf.h lauxlib.h lobject.h llimits.h lstate.h ltm.h lzio.h lmem.h lundump.h ldebug.h lopcodes.h
-	gcc -o luac luac.c lprefix.h lua.h luaconf.h lauxlib.h lobject.h llimits.h lstate.h ltm.h lzio.h lmem.h lundump.h ldebug.h lopcodes.h liblua.a 
+luac: $(LUAC_O) liblua
+	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) liblua.a $(LIBS)
 
 # Clean the results of our makefile
 clean:
@@ -79,13 +79,6 @@ linux:
 
 # DO NOT DELETE
 # Dependencies for each of the files
-liblua.o: *.c *.h
-	gcc -c *.c *.h
-
-
-
-
-
 lapi.o: lapi.c lprefix.h lua.h luaconf.h lapi.h llimits.h lstate.h \
  lobject.h ltm.h lzio.h lmem.h ldebug.h ldo.h lfunc.h lgc.h lstring.h \
  ltable.h lundump.h lvm.h
