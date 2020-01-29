@@ -9,7 +9,8 @@ int main() {
 
    std::cout << "Creating game" << std::endl;
 
-   int xpos, ypos, width, height, fullscreen;
+   int xpos, ypos, width, height;
+   bool fullscreen;
 
    // read Lua script to determine initial window size infomation
    lua_State *L = luaL_newstate();
@@ -17,7 +18,7 @@ int main() {
    luaopen_io(L);
    luaopen_string(L);
    luaopen_math(L);
-
+   luaL_dofile(L, "config.lua");
    lua_getglobal(L, "xpos");
    lua_getglobal(L, "ypos");
    lua_getglobal(L, "width");
@@ -32,6 +33,9 @@ int main() {
 
    lua_close(L);
    std::cout << "Xpos: " << xpos << "\n";
+   std::cout << "Ypos: " << ypos << "\n";
+   std::cout << "Width: " << width << "\n";
+   std::cout << "Height: " << height << "\n";
    auto game = std::make_unique<Game>("1st Game", xpos, ypos, width, height, fullscreen);
 
    std::cout << "Starting game loop" << std::endl;
