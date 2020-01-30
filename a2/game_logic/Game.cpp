@@ -49,11 +49,10 @@ void Game::handle_events()
 
 void Game::update()
 {
-   sol::state lua;
 	lua.script_file("logic.lua");
 	sol::function updateLua = lua["update"];
 	int incrementor = updateLua();
-   std::cout << incrementor;
+   std::cout << incrementor << "\n";
 }
 
 void Game::render()
