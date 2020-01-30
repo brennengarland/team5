@@ -4,7 +4,7 @@
 
 #include "SDL2/SDL.h"
 #include "sol/sol.hpp"
-#include "lua.hpp"
+#include "logic.lua"
 
 
 class Game {
