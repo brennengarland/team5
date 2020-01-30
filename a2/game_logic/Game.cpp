@@ -49,8 +49,12 @@ void Game::handle_events()
 
 void Game::update()
 {
-   // call Lua's function update() to increment a counter
-   // and print the returned value
+   std::cout << "=== opening a state ===" << std::endl;
+
+   sol::state lua;
+   lua.open_libraries(sol::lib::base, sol::lib::package);
+   lua.script("print('bark bark bark!')");
+   std::cout << std::endl;
 }
 
 void Game::render()
