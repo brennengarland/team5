@@ -52,7 +52,7 @@ void Game::update()
    sol::state lua;
 	lua.script("import logic.lua");
 	sol::function woof = lua["update"];
-	int incrementor = update();
+	int incrementor = update(void);
    std::cout << incrementor;
 }
 
