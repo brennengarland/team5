@@ -50,7 +50,7 @@ void Game::handle_events()
 void Game::update()
 {
    sol::state lua;
-	lua.script("require(\"scripts.logic\");");
+	//lua.script("require(\"scripts.logic\");");
 	sol::function updateLua = lua["update"];
 	int incrementor = updateLua();
    std::cout << incrementor;
