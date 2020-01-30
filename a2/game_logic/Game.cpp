@@ -49,12 +49,11 @@ void Game::handle_events()
 
 void Game::update()
 {
-   std::cout << "=== opening a state ===" << std::endl;
-
    sol::state lua;
-   lua.open_libraries(sol::lib::base, sol::lib::package);
-   lua.script("print('bark bark bark!')");
-   std::cout << std::endl;
+	lua.script(code);
+	sol::function woof = lua["update"];
+	int incrementor = update();
+   std::cout << incrementor;
 }
 
 void Game::render()
