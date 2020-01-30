@@ -6,7 +6,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 {
    //initilize lua
    lua.script_file("logic.lua");
-	sol::function updateLua = lua["update"];
+	
 
    Uint32 flags{};
    if (fullscreen) {
@@ -53,7 +53,7 @@ void Game::handle_events()
 
 void Game::update()
 {
-
+   sol::function updateLua = lua["update"];
 	int incrementor = updateLua();
    std::cout << incrementor << "\n";
 }
