@@ -3,6 +3,8 @@
 #define __GAME_HPP__
 
 #include "SDL2/SDL.h"
+#include "sol/sol.hpp"
+
 
 class Game {
 
