@@ -4,7 +4,7 @@
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-   //initilize lua
+   //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
    lua.script_file("logic.lua");
 	
 
@@ -53,7 +53,11 @@ void Game::handle_events()
 
 void Game::update()
 {
+	//this line instantiates updateLua as a reference to the function "update" in the file logic.lua
    sol::function updateLua = lua["update"];
+   //this line indirectly calls the function update inside of logic.lua. This function increments a counter variable.
+   //after incrementing this variable, the function returns the value of the variable. In this line, that returned value
+   //is stored in incrementor
 	int incrementor = updateLua();
    std::cout << incrementor << "\n";
 }
