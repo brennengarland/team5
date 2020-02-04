@@ -22,6 +22,8 @@ private:
    bool is_running{};
    SDL_Window* window{};
    SDL_Renderer* renderer{};
+
+   //global lua, so the counter doesn't reset
    sol::state lua;
 
 };
