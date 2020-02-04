@@ -5,6 +5,6 @@
 -- 
 xpos = 0
 ypos = 0
-width = 100
-height = 100
+width = 1000
+height = 1000
 fullscreen = false
