@@ -1,6 +1,7 @@
 
 #include "Game.hpp"
 #include <iostream>
+#include <stdexcept>
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -8,6 +9,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    if (fullscreen) {
       flags = SDL_WINDOW_FULLSCREEN;
    }
+   
+   //uncomment the following to test
+   throw std::runtime_error("Constructor Failed");
 
    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
       std::cout << "Subsystems initialized..." << std::endl;
@@ -23,6 +27,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    is_running = true;
    } else {
       is_running = false;
+      throw std::runtime_error("Constructor Failed");
    }
 }
 
