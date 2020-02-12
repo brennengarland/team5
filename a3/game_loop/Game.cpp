@@ -19,7 +19,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
       std::cout << "Subsystems initialized..." << std::endl;
-      window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+      //window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
       if (window) {
          std::cout << "Window created..." << std::endl;
       }
