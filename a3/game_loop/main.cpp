@@ -36,6 +36,7 @@ int main() {
       auto t1 = std::chrono::high_resolution_clock::now();
       auto elapsed_time = t1 - t0;
       // Frame_rate - elapsed time will give us how much time is left to sleep 
+      //Sleep in main(), pdf said to slow main()
       auto sleep_time = frame_rate - elapsed_time;
       // Sleep for however much time is left 
       std::this_thread::sleep_for(std::chrono::duration_cast<std::chrono::seconds>(sleep_time));
