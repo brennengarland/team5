@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <memory>
-#include <chrono>
-#include <thread>
+
 #include <stdexcept>
 
 int main() {
@@ -40,10 +39,10 @@ int main() {
       // Sleep for however much time is left 
       std::this_thread::sleep_for(std::chrono::duration_cast<std::chrono::seconds>(sleep_time));
 
-      // Output to verify our frame rate
-      // std::cout << "Loop Time: " << std::chrono::duration_cast<std::chrono::microseconds>(duration).count() << "\n";
-      // std::cout << "Sleep time: " << std::chrono::duration_cast<std::chrono::microseconds>(sleep_time).count() << "\n";
-      // std::cout << "Total execution time: " << std::chrono::duration_cast<std::chrono::microseconds>(duration + sleep_time).count() << "\n\n";
+      Output to verify our frame rate
+      std::cout << "Loop Time: " << std::chrono::duration_cast<std::chrono::microseconds>(duration).count() << "\n";
+      std::cout << "Sleep time: " << std::chrono::duration_cast<std::chrono::microseconds>(sleep_time).count() << "\n";
+      std::cout << "Total execution time: " << std::chrono::duration_cast<std::chrono::microseconds>(duration + sleep_time).count() << "\n\n";
    }
 
    return 0;

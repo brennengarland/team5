@@ -2,6 +2,8 @@
 #include "Game.hpp"
 #include <iostream>
 #include <stdexcept>
+#include <chrono>
+#include <thread>
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -68,6 +70,7 @@ void Game::render()
 {
    SDL_RenderClear(renderer);
    // this is where we would add stuff to render
+   //did not add sleep here because in the pdf it said to slow main down to 60hz
    SDL_RenderPresent(renderer);
 }
 
