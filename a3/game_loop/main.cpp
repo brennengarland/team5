@@ -45,7 +45,7 @@ int main() {
       std::cout << "Loop Time: " << std::chrono::duration_cast<std::chrono::microseconds>(elapsed_time).count() << "\n";
       std::cout << "Sleep time: " << std::chrono::duration_cast<std::chrono::microseconds>(sleep_time).count() << "\n";
       std::cout << "Total execution time: " << std::chrono::duration_cast<std::chrono::microseconds>(elapsed_time + sleep_time).count() << "\n\n";
-      std::cout << "Total execution time in Hertz: " << std::chrono::duration_cast<std::chrono::microseconds>(1/((elapsed_time + sleep_time).count()/1000000)).count() << "\n\n";
+      std::cout << "Total execution time in Hertz: " << std::chrono::duration_cast<std::chrono::microseconds>(1/((elapsed_time + sleep_time).count()/1000000)) << "\n\n";
 
    }
 
