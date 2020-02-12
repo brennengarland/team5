@@ -11,7 +11,10 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    }
    
    //uncomment the following to test
-   throw std::runtime_error("Constructor Failed");
+   //SDL_DestroyRenderer(renderer);
+   //SDL_DestroyWindow(window);
+   //SDL_Quit();
+   //throw std::runtime_error("Constructor Failed");
 
    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
       std::cout << "Subsystems initialized..." << std::endl;
@@ -27,6 +30,25 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    is_running = true;
    } else {
       is_running = false;
+      if(SDL_WasInit(SDL_INIT_TIMER) !=0)
+      {
+        SDL_QuitSubSystem(SDL_INIT_TIMER !=0);
+      } 
+      if(SDL_WasInit(SDL_INIT_TIMER)!=0)
+      { 
+        SDL_QuitSubSystem(SDL_INIT_AUDIO);
+      }
+      if(SDL_WasInit(SDL_INIT_VIDEO)!=0)
+      {
+        SDL_QuitSubSystem(SDL_INIT_VIDEO);
+      }
+      if(SDL_WasInit(SDL_INIT_JOYSTICK)!=0)
+      {
+        SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
+      }
+      SDL_DestroyRenderer(renderer);
+	  SDL_DestroyWindow(window);
+      SDL_Quit();
       throw std::runtime_error("Constructor Failed");
    }
 }
