@@ -17,7 +17,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    //SDL_Quit();
    //throw std::runtime_error("Constructor Failed");
 
-   if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
       std::cout << "Subsystems initialized..." << std::endl;
       window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
       if (window) {
@@ -30,7 +30,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
          SDL_Quit();
          throw std::runtime_error("Window Constructor Failed");
       }
-      //renderer = SDL_CreateRenderer(window, -1, 0);
+      renderer = SDL_CreateRenderer(window, -1, 0);
       if (renderer) {
          SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
          std::cout << "Renderer created..." << std::endl;
