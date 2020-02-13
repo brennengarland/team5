@@ -21,8 +21,6 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
       }
       else{//if window wasn't created, destroy, quit, and throw exception... destroying all items just to be sure
          is_running = false;
-         SDL_DestroyRenderer(renderer);
-	      SDL_DestroyWindow(window);
          SDL_Quit();
          throw std::runtime_error("Window Constructor Failed");
       }
@@ -33,7 +31,6 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
       }
       else{//if renderer wasn't created, destroy, quit, and throw exception... destroying all items just to be sure
          is_running = false;
-         SDL_DestroyRenderer(renderer);
 	      SDL_DestroyWindow(window);
          SDL_Quit();
          throw std::runtime_error("Renderer Constructor Failed");
@@ -41,8 +38,6 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    is_running = true;
    } else {//if SDL wasn't initialized, destroy, quit, and throw exception... destroying all items just to be sure
       is_running = false;
-      SDL_DestroyRenderer(renderer);
-	   SDL_DestroyWindow(window);
       SDL_Quit();
       throw std::runtime_error("SDL Initializaion Failed");
    }
