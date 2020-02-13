@@ -13,9 +13,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    
    //uncomment the following to test SDL initilization, window constructor, or renderer constructor to test
 
-   if (SDL_Init(SDL_INIT_EVERYTHING) == 1) {
+   if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
       std::cout << "Subsystems initialized..." << std::endl;
-      window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+      //window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
       if (window) {
          std::cout << "Window created..." << std::endl;
       }
