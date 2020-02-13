@@ -24,7 +24,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
          SDL_Quit();
          throw std::runtime_error("Window Constructor Failed");
       }
-      //renderer = SDL_CreateRenderer(window, -1, 0);
+      renderer = SDL_CreateRenderer(window, -1, 0);
       if (renderer) {
          SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
          std::cout << "Renderer created..." << std::endl;
