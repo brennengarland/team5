@@ -3,6 +3,8 @@
 #define __GAME_HPP__
 
 #include "SDL2/SDL.h"
+#include <vector>
+#include <memory>
 
 class Game {
 
@@ -24,6 +26,7 @@ public:
 private:
    int counter{};
    bool is_running{};
+   std::vector<std::unique_ptr<GameObject>> game_objects;
 };
 
 #endif

@@ -44,18 +44,19 @@ Game::~Game()
    SDL_DestroyWindow(window);
    SDL_Quit();
 
-   delete tank;
-   delete chopper;
-   delete pacman;
+   for(auto & object : game_objects) {
+      object.reset();
+   }
 
    std::cout << "Game cleaned..." << std::endl;
 }
 
 void Game::load_level()
 {
-   tank = new GameObject("../assets/images/tank-big-down.png", 0.0f, 0.0f, 0.5f, 0.5f);
-   chopper = new GameObject("../assets/images/chopper-single.png", 50.0f, 50.0f, 0.5f, 0.5f);
-   pacman = new GameObject("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f);
+
+   game_objects.push_back(std::make_unique<GameObject>("../assets/images/tank-big-down.png", 0.0f, 0.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<GameObject>("../assets/images/chopper-single.png", 50.0f, 50.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<GameObject>("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f));
 }
 
 void Game::handle_events()
@@ -73,17 +74,17 @@ void Game::handle_events()
 
 void Game::update(const float dt)
 {
-   tank->update(dt);
-   chopper->update(dt);
-   pacman->update(dt);
+   for(auto & object : game_objects) {
+      object->update(dt);
+   }
 }
 
 void Game::render()
 {
    SDL_RenderClear(renderer);
-   tank->render();
-   chopper->render();
-   pacman->render();
+   for(auto & object : game_objects) {
+      object->render();
+   }
    SDL_RenderPresent(renderer);
 }
 
