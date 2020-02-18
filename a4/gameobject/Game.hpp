@@ -3,6 +3,7 @@
 #define __GAME_HPP__
 
 #include "SDL2/SDL.h"
+#include "GameObject.hpp"
 #include <vector>
 #include <memory>
 
