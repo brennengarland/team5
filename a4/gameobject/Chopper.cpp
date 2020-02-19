@@ -18,7 +18,7 @@ Chopper::Chopper(
                        const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
 {
-   loadDefaultTexture();
+   //loadDefaultTexture();
 }
 
 Chopper::~Chopper()
