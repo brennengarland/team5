@@ -8,13 +8,13 @@
 
 class Tank : public GameObject{
 public:
-//    Tank(const char* filename_img,
-//               const float xpos, const float ypos,
-//               const float xvel, const float yvel);
-//    Tank(
-//               const float xpos, const float ypos,
-//               const float xvel, const float yvel);              
-//    ~Tank();
+   Tank(const char* filename_img,
+              const float xpos, const float ypos,
+              const float xvel, const float yvel);
+   Tank(
+              const float xpos, const float ypos,
+              const float xvel, const float yvel);              
+   ~Tank();
 
    void update(const float dt);
    void render();

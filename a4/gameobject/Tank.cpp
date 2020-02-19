@@ -19,23 +19,23 @@
 #include "SDL2/SDL_image.h"
 #include "texture_utils.hpp"
 
-// //constructor with supplied image
-// Tank::Tank(const char* filename_img,
-//                        const float xpos, const float ypos,
-//                        const float xvel, const float yvel)
-// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-// {
-//    texture = texture::load_texture(filename_img);
-// }
+//constructor with supplied image
+Tank::Tank(const char* filename_img,
+                       const float xpos, const float ypos,
+                       const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   texture = texture::load_texture(filename_img);
+}
 
-// //constructor with default tank image
-// Tank::Tank(
-//                        const float xpos, const float ypos,
-//                        const float xvel, const float yvel)
-// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-// {
-//    texture = texture::load_texture("../assets/images/tank-big-down.png");
-// }
+//constructor with default tank image
+Tank::Tank(
+                       const float xpos, const float ypos,
+                       const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   loadDefaultTexture();
+}
 
 Tank::~Tank()
 {

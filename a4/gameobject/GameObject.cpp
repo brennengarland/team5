@@ -19,7 +19,7 @@ GameObject::GameObject(
                        const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
 {
-   loadTexture();
+   loadDefaultTexture();
    //texture = texture::load_texture(filename_img);
 }
 

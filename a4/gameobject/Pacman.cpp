@@ -4,23 +4,23 @@
 #include "SDL2/SDL_image.h"
 #include "texture_utils.hpp"
 
-// constructor with supplied image
-// Pacman::Pacman(const char* filename_img,
-//                        const float xpos, const float ypos,
-//                        const float xvel, const float yvel)
-// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-// {
-//    texture = texture::load_texture(filename_img);
-// }
+constructor with supplied image
+Pacman::Pacman(const char* filename_img,
+                       const float xpos, const float ypos,
+                       const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   texture = texture::load_texture(filename_img);
+}
 
-// //constructor with default pacman image
-// Pacman::Pacman(
-//                        const float xpos, const float ypos,
-//                        const float xvel, const float yvel)
-// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-// {
-//    texture = texture::load_texture("../assets/images/chopper-sinngle.png");
-// }
+//constructor with default pacman image
+Pacman::Pacman(
+                       const float xpos, const float ypos,
+                       const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   loadDefaultTexture();
+}
 
 Pacman::~Pacman()
 {
