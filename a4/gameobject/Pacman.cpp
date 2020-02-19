@@ -1,26 +1,11 @@
-// #include "GameObject.hpp"
-// #include "texture_utils.hpp"
-// #include "Game.hpp"
-
-// class Tank : public GameObject{
-// 	public:
-// 	Tank(const char* x, const float xpos, const float ypos, const float xvel, const float yvel)
-// : GameObject("../assets/images/tank-big-down.png", xpos, ypos, xvel, yvel)
-// {
-	
-// }
-	
-	
-// };
-
-#include "Tank.hpp"
+#include "Pacman.hpp"
 #include "Game.hpp"
 #include <iostream>
 #include "SDL2/SDL_image.h"
 #include "texture_utils.hpp"
 
 //constructor with supplied image
-Tank::Tank(const char* filename_img,
+Pacman::Pacman(const char* filename_img,
                        const float xpos, const float ypos,
                        const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
@@ -28,21 +13,21 @@ Tank::Tank(const char* filename_img,
    texture = texture::load_texture(filename_img);
 }
 
-//constructor with default tank image
-Tank::Tank(
+//constructor with default pacman image
+Pacman::Pacman(
                        const float xpos, const float ypos,
                        const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
 {
-   texture = texture::load_texture("../assets/images/tank-big-down.png");
+   texture = texture::load_texture("../assets/images/chopper-sinngle.png");
 }
 
-Tank::~Tank()
+Pacman::~Pacman()
 {
    SDL_DestroyTexture(texture);
 }
 
-void Tank::update(const float dt)
+void Pacman::update(const float dt)
 {
    xpos += xvel * dt;
    ypos += yvel * dt;
@@ -58,7 +43,7 @@ void Tank::update(const float dt)
    dest_rect.h = src_rect.h * 2;
 }
 
-void Tank::render()
+void Pacman::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }

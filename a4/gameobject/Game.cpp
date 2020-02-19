@@ -55,9 +55,9 @@ Game::~Game()
 void Game::load_level()
 {
 
-   game_objects.push_back(std::make_unique<Tank>("", 0.0f, 0.0f, 0.5f, 0.5f));
-   game_objects.push_back(std::make_unique<GameObject>("../assets/images/chopper-sinngle.png", 50.0f, 50.0f, 0.5f, 0.5f));
-   game_objects.push_back(std::make_unique<GameObject>("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Tank>("../assets/images/tank-big-down.png", 0.0f, 0.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Chopper>("../assets/images/chopper-sinngle.png", 50.0f, 50.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Pacman>("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f));
 }
 
 void Game::handle_events()
