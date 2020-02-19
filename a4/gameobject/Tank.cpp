@@ -62,8 +62,8 @@ void Tank::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }
-void Tank::loadDefaultTexture()
-{
-      texture = texture::load_texture("../assets/images/tank-big-down.png");
+// void Tank::loadDefaultTexture()
+// {
+//       texture = texture::load_texture("../assets/images/tank-big-down.png");
 
-}
+// }

@@ -25,7 +25,7 @@ private:
 
    SDL_Texture* texture{};
    SDL_Rect src_rect, dest_rect;
-   virtual void loadDefaultTexture() = 0;
+   //virtual void loadDefaultTexture() = 0;
 
 };
 

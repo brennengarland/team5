@@ -47,8 +47,8 @@ void Pacman::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }
-void Pacman::loadDefaultTexture()
-{
-      texture = texture::load_texture("../assets/images//pacman/pacman_32x32.png");
+// void Pacman::loadDefaultTexture()
+// {
+//       texture = texture::load_texture("../assets/images//pacman/pacman_32x32.png");
 
-}
+// }

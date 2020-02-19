@@ -47,8 +47,8 @@ void Chopper::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }
-void Tank::loadDefaultTexture()
-{
-      texture = texture::load_texture("../assets/images/chopper-sinngle.png");
+// void Tank::loadDefaultTexture()
+// {
+//       texture = texture::load_texture("../assets/images/chopper-sinngle.png");
 
-}
+// }

@@ -23,9 +23,9 @@ private:
    float xpos{}, ypos{};
    float xvel{}, yvel{};
 
-   SDL_Texture* texture{};
+   SDL_Texture* texture = texture::load_texture("../assets/images//pacman/pacman_32x32.png");;
    SDL_Rect src_rect, dest_rect;
-   void loadDefaultTexture();
+   //void loadDefaultTexture();
 
 };
 
