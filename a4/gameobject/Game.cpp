@@ -1,6 +1,9 @@
 
 #include "Game.hpp"
 #include "Tank.cpp"
+#include "Pacman.cpp"
+#include "Chopper.cpp"
+
 #include <iostream>
 #include "SDL2/SDL_image.h"
 
@@ -54,10 +57,10 @@ Game::~Game()
 
 void Game::load_level()
 {
-
+  
    game_objects.push_back(std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f));
-   //game_objects.push_back(std::make_unique<GameObject>("../assets/images/chopper-sinngle.png", 50.0f, 50.0f, 0.5f, 0.5f));
-   //game_objects.push_back(std::make_unique<GameObject>("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f));
 }
 
 void Game::handle_events()
