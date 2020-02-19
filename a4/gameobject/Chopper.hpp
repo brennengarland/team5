@@ -11,6 +11,9 @@ public:
    Chopper(const char* filename_img,
               const float xpos, const float ypos,
               const float xvel, const float yvel);
+   Chopper(
+              const float xpos, const float ypos,
+              const float xvel, const float yvel);
               
    ~Chopper();
 
