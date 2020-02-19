@@ -1,11 +1,12 @@
 
 #include "Game.hpp"
-
+#include "Tank.cpp"
 #include <iostream>
 #include "SDL2/SDL_image.h"
 
 #include "texture_utils.hpp"
 #include "GameObject.hpp"
+
 
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
@@ -54,8 +55,8 @@ Game::~Game()
 void Game::load_level()
 {
 
-   game_objects.push_back(std::make_unique<GameObject>("../assets/images/tank-big-down.png", 0.0f, 0.0f, 0.5f, 0.5f));
-   game_objects.push_back(std::make_unique<GameObject>("../assets/images/chopper-single.png", 50.0f, 50.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<Tank>("", 0.0f, 0.0f, 0.5f, 0.5f));
+   game_objects.push_back(std::make_unique<GameObject>("../assets/images/chopper-sinngle.png", 50.0f, 50.0f, 0.5f, 0.5f));
    game_objects.push_back(std::make_unique<GameObject>("../assets/images/pacman/pacman_32x32.png", 100.0f, 100.0f, 0.5f, 0.5f));
 }
 
