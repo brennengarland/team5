@@ -9,7 +9,7 @@ public:
    // GameObject(const char* filename_img,
    //            const float xpos, const float ypos,
    //            const float xvel, const float yvel);
-   virutal ~GameObject() {};
+   virtual ~GameObject() {};
 
    virtual void update(const float dt) = 0;
    virtual void render() = 0;
