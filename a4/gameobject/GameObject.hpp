@@ -12,12 +12,9 @@ public:
    virtual ~GameObject() {};
    virtual void update(const float dt) = 0;
    virtual void render() = 0;
+   virtual GameObject() = 0;
 
 private:
-   GameObject() {}
-	GameObject(const GameObject&) = delete; //copy constructor
-	GameObject& operator=(GameObject&&) = delete; //move assignment operator
-
    float xpos{}, ypos{};
    float xvel{}, yvel{};
 
