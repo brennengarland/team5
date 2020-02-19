@@ -15,6 +15,9 @@ public:
    GameObject(const char* filename_img,
               const float xpos, const float ypos,
               const float xvel, const float yvel);
+   GameObject(
+              const float xpos, const float ypos,
+              const float xvel, const float yvel);
 
 private:
    float xpos{}, ypos{};
@@ -22,6 +25,8 @@ private:
 
    SDL_Texture* texture{};
    SDL_Rect src_rect, dest_rect;
+   virtual void loadDefaultTexture() = 0;
+
 };
 
 #endif

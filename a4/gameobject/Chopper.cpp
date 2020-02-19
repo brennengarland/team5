@@ -4,28 +4,28 @@
 #include "SDL2/SDL_image.h"
 #include "texture_utils.hpp"
 
-//constructor with supplied image
-Chopper::Chopper(const char* filename_img,
-                       const float xpos, const float ypos,
-                       const float xvel, const float yvel)
-: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-{
-   texture = texture::load_texture(filename_img);
-}
+// //constructor with supplied image
+// Chopper::Chopper(const char* filename_img,
+//                        const float xpos, const float ypos,
+//                        const float xvel, const float yvel)
+// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+// {
+//    texture = texture::load_texture(filename_img);
+// }
 
-//constructor with default chopper image
-Chopper::Chopper(
-                       const float xpos, const float ypos,
-                       const float xvel, const float yvel)
-: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-{
-   texture = texture::load_texture("../assets/images/chopper-sinngle.png");
-}
+// //constructor with default chopper image
+// Chopper::Chopper(
+//                        const float xpos, const float ypos,
+//                        const float xvel, const float yvel)
+// : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+// {
+//    texture = texture::load_texture("../assets/images/chopper-sinngle.png");
+// }
 
-Chopper::~Chopper()
-{
-   SDL_DestroyTexture(texture);
-}
+// Chopper::~Chopper()
+// {
+//    SDL_DestroyTexture(texture);
+// }
 
 void Chopper::update(const float dt)
 {
@@ -46,4 +46,9 @@ void Chopper::update(const float dt)
 void Chopper::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
+}
+void Tank::loadDefaultTexture()
+{
+      texture = texture::load_texture("../assets/images/chopper-sinngle.png");
+
 }

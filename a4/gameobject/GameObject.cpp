@@ -3,19 +3,31 @@
 #include "texture_utils.hpp"
 #include "Game.hpp"
 
+//constructor with supplied file
 GameObject::GameObject(const char* filename_img,
                        const float xpos, const float ypos,
                        const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
 {
+   //loadTexture();
    texture = texture::load_texture(filename_img);
 }
 
+//default constructor
+GameObject::GameObject(
+                       const float xpos, const float ypos,
+                       const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   loadTexture();
+   //texture = texture::load_texture(filename_img);
+}
 
 GameObject::~GameObject()
 {
    SDL_DestroyTexture(texture);
 }
+
 
 // void GameObject::update(const float dt)
 // {
