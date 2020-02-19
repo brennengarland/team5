@@ -5,6 +5,8 @@
 #include "GameObject.hpp"
 #include <vector>
 #include <memory>
+#include "texture_utils.hpp"
+
 
 class Pacman : public GameObject{
 public:

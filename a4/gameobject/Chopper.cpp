@@ -2,7 +2,6 @@
 #include "Game.hpp"
 #include <iostream>
 #include "SDL2/SDL_image.h"
-#include "texture_utils.hpp"
 
 //constructor with supplied image
 Chopper::Chopper(const char* filename_img,
