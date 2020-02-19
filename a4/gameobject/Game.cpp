@@ -5,6 +5,7 @@
 
 #include "texture_utils.hpp"
 #include "GameObject.hpp"
+#include "Chopper.hpp"
 
 
 SDL_Renderer* Game::renderer{};
