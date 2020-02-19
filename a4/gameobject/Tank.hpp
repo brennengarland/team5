@@ -12,10 +12,6 @@ class Tank : public GameObject{
     void render();
 
     private:
-       float xpos{}, ypos{};
-       float xvel{}, yvel{};
 
-       SDL_Texture* texture{};
-       SDL_Rect src_rect, dest_rect;
 	
 };
