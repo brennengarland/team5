@@ -6,10 +6,6 @@
 #include "GameObject.hpp"
 #include <vector>
 #include <memory>
-#include "Tank.hpp"
-#include "Chopper.hpp"
-#include "Pacman.hpp"
-#include "texture_utils.hpp"
 
 class Game {
 
