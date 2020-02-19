@@ -12,6 +12,7 @@ public:
 
    ~GameObject();
 
+   //make these abstract functions so child classes can define behavior
    virtual void update(const float dt) = 0;
    virtual void render() = 0;
 

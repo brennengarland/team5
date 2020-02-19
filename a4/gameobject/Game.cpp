@@ -51,6 +51,8 @@ Game::~Game()
    for(auto & object : game_objects) {
       object.reset();
    }
+   //clear vector
+   game_objects.clear();
 
    std::cout << "Game cleaned..." << std::endl;
 }
