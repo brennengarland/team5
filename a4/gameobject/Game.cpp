@@ -1,6 +1,8 @@
 
 #include "Game.hpp"
-
+#include "Tank.hpp"
+#include "Pacman.hpp"
+#include "Chopper.hpp"
 
 
 

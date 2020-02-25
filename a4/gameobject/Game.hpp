@@ -3,9 +3,7 @@
 #define __GAME_HPP__
 
 #include "SDL2/SDL.h"
-#include "Tank.hpp"
-#include "Pacman.hpp"
-#include "Chopper.hpp"
+
 #include "GameObject.hpp"
 #include <vector>
 #include <memory>
