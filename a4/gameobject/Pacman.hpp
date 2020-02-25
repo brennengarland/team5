@@ -14,9 +14,9 @@ class Pacman : public GameObject{
         }
 
     //defined file constructor
-    Pacman(const char* x, const float xpos, const float ypos, const float xvel, const float yvel): GameObject(x, xpos, ypos, xvel, yvel)
-        {
-        }
+    // Pacman(const char* x, const float xpos, const float ypos, const float xvel, const float yvel): GameObject(x, xpos, ypos, xvel, yvel)
+    //     {
+    //     }
 
     ~Pacman();
     //define own behavior
