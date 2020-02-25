@@ -14,10 +14,10 @@ class Pacman : public GameObject{
         Pacman(const float xpos, const float ypos, const float xvel, const float yvel)
              {
                 texture = texture::load_texture("../assets/images/pacman/pacman_32x32.png");
-                this.xpos = xpos;
-                this.ypos = ypos;
-                this.xvel = xvel;
-                this.yvel = yvel;
+                this->xpos = xpos;
+                this->ypos = ypos;
+                this->xvel = xvel;
+                this->yvel = yvel;
 
             }
     //defined file constructor
@@ -25,17 +25,13 @@ class Pacman : public GameObject{
     //     {
     //     }
 
-        ~Pacman();
+    ~Pacman();
     //define own behavior
-        virtual void update(const float dt) override;
-        virtual void render() override;
+    virtual void update(const float dt) override;
+    virtual void render() override;
 
     private:
-        float xpos{}, ypos{};
-        float xvel{}, yvel{};
 
-        SDL_Texture* texture{};
-        SDL_Rect src_rect, dest_rect;
 
 	
 };
