@@ -16,8 +16,8 @@ class Chopper : public GameObject{
         {
         }
 
-    void update(const float dt);
-    void render();
+    void update(const float dt) override;
+    void render() override;
 
     private:
 
