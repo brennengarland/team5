@@ -10,7 +10,9 @@ public:
    GameObject(const char* filename_img,
               const float xpos, const float ypos,
               const float xvel, const float yvel);
-
+   GameObject(
+              const float xpos, const float ypos,
+              const float xvel, const float yvel);
    ~GameObject();
 
    //make these abstract functions so child classes can define behavior
