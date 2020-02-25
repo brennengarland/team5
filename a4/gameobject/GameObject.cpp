@@ -9,13 +9,7 @@ GameObject::GameObject(const char* filename_img,
 {
    texture = texture::load_texture(filename_img);
 }
-GameObject::GameObject(
-                       const float xpos, const float ypos,
-                       const float xvel, const float yvel)
-: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-{
-   //texture = texture::load_texture(filename_img);
-}
+
 
 GameObject::~GameObject()
 {
