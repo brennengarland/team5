@@ -1,7 +1,7 @@
 
 
 #include "Pacman.hpp"
-
+#include "Game.hpp"
 
 void Pacman::update(const float dt)
 {
