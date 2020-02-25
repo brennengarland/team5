@@ -1,6 +1,7 @@
 
 
 #include "Chopper.hpp"
+#include "Game.hpp"
 
 
 void Chopper::update(const float dt)
