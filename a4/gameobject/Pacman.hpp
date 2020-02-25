@@ -17,8 +17,8 @@ class Pacman : public GameObject{
         }
 
     //define own behavior
-    void update(const float dt) override;
-    void render() override;
+    virtual void update(const float dt) override;
+    virtual void render() override;
 
     private:
 
