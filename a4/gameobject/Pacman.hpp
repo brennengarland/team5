@@ -14,10 +14,10 @@ class Pacman : public GameObject{
     Pacman(const float xpos, const float ypos, const float xvel, const float yvel)
         {
             texture = texture::load_texture("../assets/images/pacman/pacman_32x32.png");
-            xpos = xpos;
-            ypos = ypos;
-            xvel = xvel;
-            yvel = yvel;
+            this.xpos = xpos;
+            this.ypos = ypos;
+            this.xvel = xvel;
+            this.yvel = yvel;
 
         }
     //defined file constructor
