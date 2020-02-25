@@ -4,7 +4,6 @@
 
 #include "SDL2/SDL.h"
 #include "texture_utils.hpp"
-#include "Game.hpp"
 
 class GameObject {
 public:
