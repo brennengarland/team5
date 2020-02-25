@@ -10,6 +10,7 @@ class Pacman : public GameObject{
     //default constructor, with own image
 	Pacman(const float xpos, const float ypos, const float xvel, const float yvel): GameObject("../assets/images/pacman/pacman_32x32.png", xpos, ypos, xvel, yvel)
         {
+            //comment
         }
 
     //defined file constructor
