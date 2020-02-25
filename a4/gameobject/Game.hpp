@@ -3,12 +3,13 @@
 #define __GAME_HPP__
 
 #include "SDL2/SDL.h"
-#include "GameObject.hpp"
-#include <vector>
-#include <memory>
 #include "Tank.hpp"
 #include "Pacman.hpp"
 #include "Chopper.hpp"
+#include "GameObject.hpp"
+#include <vector>
+#include <memory>
+
 #include <iostream>
 #include "SDL2/SDL_image.h"
 #include "texture_utils.hpp"
