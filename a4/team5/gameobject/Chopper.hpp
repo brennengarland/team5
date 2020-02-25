@@ -13,6 +13,7 @@ class Chopper : public GameObject{
         {
         }
 
+    
     void update(const float dt);
     void render();
 

@@ -23,3 +23,8 @@ void Chopper::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }
+
+Chopper::~Chopper()
+{
+   SDL_DestroyTexture(texture);
+}

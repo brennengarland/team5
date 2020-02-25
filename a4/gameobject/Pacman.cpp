@@ -23,3 +23,8 @@ void Pacman::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
 }
+
+Pacman::~Pacman()
+{
+   SDL_DestroyTexture(texture);
+}

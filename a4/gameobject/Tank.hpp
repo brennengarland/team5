@@ -15,7 +15,7 @@ class Tank : public GameObject{
     Tank(const char* x, const float xpos, const float ypos, const float xvel, const float yvel): GameObject(x, xpos, ypos, xvel, yvel)
         {
         }
-
+    ~Tank();
     virtual void update(const float dt) override;
     virtual void render() override;
 
