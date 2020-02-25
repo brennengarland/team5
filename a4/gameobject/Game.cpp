@@ -1,10 +1,7 @@
 
 #include "Game.hpp"
 
-#include <iostream>
-#include "SDL2/SDL_image.h"
 
-#include "texture_utils.hpp"
 
 
 
