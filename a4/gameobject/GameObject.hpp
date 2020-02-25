@@ -11,7 +11,7 @@ public:
               const float xpos, const float ypos,
               const float xvel, const float yvel);
    
-   ~GameObject();
+   virtual ~GameObject();
 
    //make these abstract functions so child classes can define behavior
    virtual void update(const float dt) = 0;
