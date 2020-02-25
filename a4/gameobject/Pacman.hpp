@@ -1,6 +1,9 @@
+#ifndef __PACMAN_HPP__
+#define __PACMAN_HPP__
+
 #include "GameObject.hpp"
 #include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 class Pacman : public GameObject{
 	public:
@@ -21,3 +24,5 @@ class Pacman : public GameObject{
 
 	
 };
+#endif
+
