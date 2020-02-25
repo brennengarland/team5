@@ -1,6 +1,9 @@
+#ifndef __CHOPPER_HPP__
+#define __CHOPPER_HPP__
+
 #include "GameObject.hpp"
 #include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 class Chopper : public GameObject{
 	public:
@@ -20,3 +23,5 @@ class Chopper : public GameObject{
 
 	
 };
+#endif
+

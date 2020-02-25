@@ -1,6 +1,9 @@
+#ifndef __TANK_HPP__
+#define __TANK_HPP__
+
 #include "GameObject.hpp"
 #include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 class Tank : public GameObject{
 	public:
@@ -20,3 +23,5 @@ class Tank : public GameObject{
 
 	
 };
+#endif
+
