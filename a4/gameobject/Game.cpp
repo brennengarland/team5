@@ -46,11 +46,8 @@ Game::~Game()
    SDL_DestroyWindow(window);
    SDL_Quit();
 
-   for(auto & object : game_objects) {
-      object.reset();
-   }
-   //clear vector
-   game_objects.clear();
+   //vector delete out of scope and unique points inside vector will automatically clean up
+   
 
    std::cout << "Game cleaned..." << std::endl;
 }
