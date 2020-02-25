@@ -2,7 +2,6 @@
 #define __CHOPPER_HPP__
 
 #include "GameObject.hpp"
-#include "texture_utils.hpp"
 
 
 class Chopper : public GameObject{

@@ -2,7 +2,6 @@
 #define __TANK_HPP__
 
 #include "GameObject.hpp"
-#include "texture_utils.hpp"
 
 
 class Tank : public GameObject{

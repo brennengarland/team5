@@ -8,9 +8,7 @@
 #include <vector>
 #include <memory>
 
-#include <iostream>
 #include "SDL2/SDL_image.h"
-#include "texture_utils.hpp"
 
 class Game {
 
