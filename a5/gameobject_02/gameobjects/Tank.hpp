@@ -6,9 +6,8 @@
 
 class Tank: public GameObject {
 public:
-   Tank(const char* texture_sheet,
-        const float xpos, const float ypos,
-        const float xvel, const float yvel);
+   Tank(const float xpos, const float ypos, const float xvel, const float yvel);
+
    ~Tank();
 
    void update(const float dt) override;

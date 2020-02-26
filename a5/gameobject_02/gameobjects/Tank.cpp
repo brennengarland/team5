@@ -6,13 +6,9 @@
 
 #include <iostream>
 
-Tank::Tank(const char* texture_sheet,
-           const float xpos, const float ypos,
-           const float xvel, const float yvel)
-: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-{
-   texture = sdl_utils::load_texture(texture_sheet);
-}
+Tank::Tank(const float xpos, const float ypos, const float xvel, const float yvel): GameObject("../assets/images/tank-big-down.png", xpos, ypos, xvel, yvel)
+        {
+        }
 
 Tank::~Tank()
 {

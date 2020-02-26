@@ -6,9 +6,8 @@
 
 class Pacman: public GameObject {
 public:
-   Pacman(const char* texture_sheet,
-          const float xpos, const float ypos,
-          const float xvel, const float yvel);
+   Pacman(const float xpos, const float ypos, const float xvel, const float yvel);
+
    ~Pacman();
 
    void update(const float dt) override;

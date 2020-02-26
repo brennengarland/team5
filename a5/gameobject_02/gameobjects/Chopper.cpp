@@ -6,13 +6,9 @@
 
 #include <iostream>
 
-Chopper::Chopper(const char* texture_sheet,
-                 const float xpos, const float ypos,
-                 const float xvel, const float yvel)
-: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
-{
-   texture = sdl_utils::load_texture(texture_sheet);
-}
+Chopper::Chopper(const float xpos, const float ypos, const float xvel, const float yvel): GameObject("../assets/images/chopper-single.png", xpos, ypos, xvel, yvel)
+        {
+        }
 
 Chopper::~Chopper()
 {
