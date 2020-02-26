@@ -25,7 +25,7 @@ int main() {
    try{
       game->load_level();
    }
-   catch{
+   catch(std::runtime_error x){
       std::cout<<"ERROR OCCURED: " << x.what() << "\n";
 	   exit(0);
    }
