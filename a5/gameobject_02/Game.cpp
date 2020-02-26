@@ -26,11 +26,18 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
 	luaInterpreterState.open_libraries(sol::lib::base);
    luaInterpreterState.script_file("config.lua");
+   //initialize count to 0
    luaInterpreterState.script("count = 0");
+   //get count of table
    luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
+   counter = luaInterpreterState["count"];
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
+   //throw exception if no objects counted
+   if(counter == 0){
+      throw std::runtime_error("No Objects in lua table?");
+   }
 
    Uint32 flags{};
    if (fullscreen) {
@@ -90,19 +97,18 @@ void Game::load_level()
    if(!luagameobjs.valid()){
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
-   int numberOfItems = luaInterpreterState["count"];
-   std::cout << "\n\n" << numberOfItems << "\n\n";
-   // for( auto& newObject : luagameobjs ){
-   //    if(newObject["kind"] == "chopper")
-   //       game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-   //    else if(newObject["kind"] == "tank")
-   //       game_objs.emplace_back(std::move(std::make_unique<Tank>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-   //    else if(newObject["kind"] == "pacman")
-   //       game_objs.emplace_back(std::move(std::make_unique<Pacman>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-   //    else {//one item failed to load correctly
-   //       throw std::runtime_error("Failed to load an item from the config file");
-   //    }
-   // }
+
+   for( int i = 1; i < counter + 1; i++ ){
+      if(luagameobjs["player" + std::to_string(i)]["kind"] == "chopper")
+         game_objs.emplace_back(std::move(std::make_unique<Chopper>(luagameobjs["player" + std::to_string(i)]["xpos"], luagameobjs["player" + std::to_string(i)]["ypos"], luagameobjs["player" + std::to_string(i)]["xvel"], luagameobjs["player" + std::to_string(i)]["yvel"])));
+      else if(luagameobjs["player" + std::to_string(i)]["kind"] == "tank")
+         game_objs.emplace_back(std::move(std::make_unique<Tank>(luagameobjs["player" + std::to_string(i)]["xpos"], luagameobjs["player" + std::to_string(i)]["ypos"], luagameobjs["player" + std::to_string(i)]["xvel"], luagameobjs["player" + std::to_string(i)]["yvel"])));
+      else if(luagameobjs["player" + std::to_string(i)]["kind"] == "pacman")
+         game_objs.emplace_back(std::move(std::make_unique<Pacman>(luagameobjs["player" + std::to_string(i)]["xpos"], luagameobjs["player" + std::to_string(i)]["ypos"], luagameobjs["player" + std::to_string(i)]["xvel"], luagameobjs["player" + std::to_string(i)]["yvel"])));
+      else {//one item failed to load correctly
+         throw std::runtime_error("Failed to load an item from the config file");
+      }
+   }
       
    //throw exception
    // game_objs.emplace_back(std::move(chopper));
