@@ -13,6 +13,10 @@ sol::state Game::luaInterpreterState;
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
 
+void Throw_Lua_Exception() {
+	   throw std::runtime_error("Lua Error, please check config.lua for syntax errors");
+   }
+
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
    //added error checking from previous assignment as well
@@ -20,9 +24,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
    luaInterpreterState.script_file("config.lua");
-   void Throw_Lua_Exception() {
-	   throw std::runtime_error("Lua Error, please check config.lua for syntax errors");
-   }
+
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
