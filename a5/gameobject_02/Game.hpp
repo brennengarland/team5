@@ -25,12 +25,13 @@ public:
 
    static SDL_Renderer* renderer;
    static SDL_Window* window;
+   static sol::state luaInterpreterState;
+
 
 private:
    int counter{};
    bool is_running{};
    std::vector<std::unique_ptr<GameObject>> game_objs;
-   static sol::state luaInterpreterState;
 
 };
 
