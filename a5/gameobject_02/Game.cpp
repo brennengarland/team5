@@ -89,7 +89,7 @@ void Game::load_level()
          SDL_Quit();
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
-   for( auto& newObject : game_objs ){
+   for( auto& newObject : luagameobjs ){
       if(newObject["kind"] == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
       else if(newObject["kind"] == "tank")
