@@ -4,6 +4,7 @@
 
 #include "SDL2/SDL.h"
 #include "GameObject.hpp"
+#include "sol/sol.hpp"
 
 #include <vector>
 #include <memory>
