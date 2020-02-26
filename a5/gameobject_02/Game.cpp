@@ -30,7 +30,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 	luaInterpreterState.open_libraries(sol::lib::base);
    //open libraries
    try{
-      lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
+      luaInterpreterState.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
    }
 	catch( const sol::error& e ) {
       throw std::runtime_error("failed to load lua libraries" + e.what() + std::endl);
