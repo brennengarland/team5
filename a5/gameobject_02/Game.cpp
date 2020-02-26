@@ -9,10 +9,13 @@
 #include "gameobjects/Tank.hpp"
 #include "gameobjects/Pacman.hpp"
 
+//lua state
 sol::state Game::luaInterpreterState;
+
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
 
+//lua exception thrower, specifically for loading script in initially
 void Throw_Lua_Exception() {
 	   throw std::runtime_error("Lua Error, please check config.lua for syntax errors");
    }
@@ -30,6 +33,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    luaInterpreterState.script("count = 0");
    //get count of table
    luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
+   //check for lua table counter error
+   if(!luaInterpreterState["count"].valid())
+      throw std::runtime_error("Failed to load table count in lua...");
    counter = luaInterpreterState["count"];
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;

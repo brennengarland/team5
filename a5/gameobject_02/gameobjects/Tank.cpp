@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-
+//changed default constructor to specifically load in correct image
 Tank::Tank(const float xpos, const float ypos,const float xvel, const float yvel)
 : xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
 {
