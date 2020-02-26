@@ -23,8 +23,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
-   luaInterpreterState.script_file("config.lua");
 
+	luaInterpreterState.open_libraries(sol::lib::base);
+   luaInterpreterState.script_file("config.lua");
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
@@ -85,21 +86,21 @@ void Game::load_level()
    
    //check to see if config file was loaded correctly
    if(!luagameobjs.valid()){
-         is_running = false;
-         SDL_Quit();
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
-   for( auto& newObject : luagameobjs ){
-      if(newObject["kind"] == "chopper")
-         game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-      else if(newObject["kind"] == "tank")
-         game_objs.emplace_back(std::move(std::make_unique<Tank>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-      else if(newObject["kind"] == "pacman")
-         game_objs.emplace_back(std::move(std::make_unique<Pacman>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-      else {//one item failed to load correctly
-         throw std::runtime_error("Failed to load an item from the config file");
-      }
-   }
+   int numberOfItems = luaInterpreterState["#gameobjs"];
+   std::cout << "\n\n" + numberOfItems + "\n\n";
+   // for( auto& newObject : luagameobjs ){
+   //    if(newObject["kind"] == "chopper")
+   //       game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+   //    else if(newObject["kind"] == "tank")
+   //       game_objs.emplace_back(std::move(std::make_unique<Tank>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+   //    else if(newObject["kind"] == "pacman")
+   //       game_objs.emplace_back(std::move(std::make_unique<Pacman>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+   //    else {//one item failed to load correctly
+   //       throw std::runtime_error("Failed to load an item from the config file");
+   //    }
+   // }
       
    //throw exception
    // game_objs.emplace_back(std::move(chopper));
