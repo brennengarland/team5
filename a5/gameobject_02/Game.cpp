@@ -33,7 +33,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
       luaInterpreterState.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
    }
 	catch( const sol::error& e ) {
-      std::string outError = string("failed to load lua libraries") + string(e.what()) + string("\n");
+      std::string outError = std::string("failed to load lua libraries") + std::string(e.what()) + std::string("\n");
 
       throw std::runtime_error(outError);
 
@@ -44,7 +44,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 		luaInterpreterState.script_file("config.lua");
 	}
 	catch( const sol::error& e ) {
-      std::string outError = string("failed to load lua config file") + string(e.what()) + string("\n");
+      std::string outError = std::string("failed to load lua config file") + std::string(e.what()) + std::string("\n");
       throw std::runtime_error(outError);
 
 	}
