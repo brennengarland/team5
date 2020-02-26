@@ -107,11 +107,11 @@ void Game::load_level()
       float yvelIn = luagameobjs["player" + std::to_string(i)]["yvel"];
 
       if(kind == "chopper")
-         game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn));
+         game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "tank")
-         game_objs.emplace_back(std::move(std::make_unique<Tank>(xposIn, yposIn, xvelIn, yvelIn));
+         game_objs.emplace_back(std::move(std::make_unique<Tank>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "pacman")
-         game_objs.emplace_back(std::move(std::make_unique<Pacman>(xposIn, yposIn, xvelIn, yvelIn));
+         game_objs.emplace_back(std::move(std::make_unique<Pacman>(xposIn, yposIn, xvelIn, yvelIn)));
       else {//one item failed to load correctly
          throw std::runtime_error("Failed to load an item from the config file");
       }
