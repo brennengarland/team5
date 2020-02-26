@@ -26,10 +26,8 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
 	luaInterpreterState.open_libraries(sol::lib::base);
    luaInterpreterState.script_file("config.lua");
-   luaInterpreterState.script("
-                        count = 0
-                        for _ in pairs(T) do count = count + 1 end
-      ");
+   luaInterpreterState.script("count = 0");
+   luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
