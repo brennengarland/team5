@@ -18,7 +18,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
-   this->luaInterpreterState.script_file("config.lua");
+   Game.luaInterpreterState.script_file("config.lua");
    auto gameobjs = luaInterpreterState["gameobjs"];
 
    //check to see if config file was loaded correctly
