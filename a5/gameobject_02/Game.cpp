@@ -78,13 +78,22 @@ Game::~Game()
 
 void Game::load_level()
 {
-   auto chopper = std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f);
-   auto tank = std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f);
-   auto pacman = std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f);
-
-   game_objs.emplace_back(std::move(chopper));
-   game_objs.emplace_back(std::move(tank));
-   game_objs.emplace_back(std::move(pacman));
+   // auto chopper = std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f);
+   // auto tank = std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f);
+   // auto pacman = std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f);
+   //iterate of game_objs
+   for( auto& newObject : game_objs )
+      if(newObject["kind"] == "chopper")
+         game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+      else if(newObject["kind"] == "tank")
+         game_objs.emplace_back(std::move(std::make_unique<Tank>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+      else if(newObject["kind"] == "pacman")
+         game_objs.emplace_back(std::move(std::make_unique<Pacman>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
+      else
+         //throw exception
+   // game_objs.emplace_back(std::move(chopper));
+   // game_objs.emplace_back(std::move(tank));
+   // game_objs.emplace_back(std::move(pacman));
 }
 
 void Game::handle_events()
