@@ -28,7 +28,16 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
 
 	luaInterpreterState.open_libraries(sol::lib::base);
+   //open libraries
+   try{
+      lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
+   }
+	catch( const sol::error& e ) {
+      throw std::runtime_error("failed to load lua libraries" + e.what() + std::endl);
 
+	}
+
+   //load config file
    try {
 		luaInterpreterState.script_file("config.lua");
 	}
@@ -36,6 +45,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
       throw std::runtime_error("failed to load lua config file" + e.what() + std::endl);
 
 	}
+
    //initialize count to 0
    luaInterpreterState.script("count = 0");
    //get count of table
