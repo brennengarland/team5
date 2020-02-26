@@ -25,7 +25,8 @@ public:
 
    static SDL_Renderer* renderer;
    static SDL_Window* window;
-   static sol::state luaInterpreterState;
+
+   sol::state* luaInterpreterState;
 
 
 private:
