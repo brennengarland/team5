@@ -72,6 +72,8 @@ Game::~Game()
    SDL_DestroyRenderer(renderer);
    SDL_DestroyWindow(window);
    SDL_Quit();
+   std::cout << "Game cleaned..." << std::endl;
+
 }
 
 void Game::load_level()
