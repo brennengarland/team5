@@ -89,8 +89,12 @@ void Game::load_level()
          game_objs.emplace_back(std::move(std::make_unique<Tank>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
       else if(newObject["kind"] == "pacman")
          game_objs.emplace_back(std::move(std::make_unique<Pacman>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
-      else
-         //throw exception
+      else {//one item failed to load correctly
+         throw std::runtime_error("Failed to load an item from the config file");
+      }
+
+      
+   //throw exception
    // game_objs.emplace_back(std::move(chopper));
    // game_objs.emplace_back(std::move(tank));
    // game_objs.emplace_back(std::move(pacman));

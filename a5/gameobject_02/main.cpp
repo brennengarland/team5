@@ -20,7 +20,15 @@ int main() {
 	   std::cout<<"ERROR OCCURED: " << x.what() << "\n";
 	   exit(0);
    }   
-   game->load_level();
+
+   //try to load items
+   try{
+      game->load_level();
+   }
+   catch{
+      std::cout<<"ERROR OCCURED: " << x.what() << "\n";
+	   exit(0);
+   }
    
    float fps{30};                     // frame rate (e.g., 30 frames per seconds)
    float delta_time{1.0f/fps};        // in seconds (e.g., 30 Hz => 0.03333)
