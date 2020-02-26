@@ -30,7 +30,7 @@ private:
    int counter{};
    bool is_running{};
    std::vector<std::unique_ptr<GameObject>> game_objs;
-   sol::state luaInterpreterState;
+   static sol::state luaInterpreterState;
 
 };
 
