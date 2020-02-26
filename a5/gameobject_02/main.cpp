@@ -10,8 +10,15 @@
 int main() {
 
    std::cout << "Creating game" << std::endl;
-   auto game = std::make_unique<Game>("1st Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
-   game->load_level();
+   //
+   try{
+      auto game = std::make_unique<Game>("1st Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+   }
+   catch(std::runtime_error x)
+   {
+	   std::cout<<"ERROR OCCURED: " << x.what() << "\n";
+	   exit(0);
+   }   game->load_level();
    
    float fps{30};                     // frame rate (e.g., 30 frames per seconds)
    float delta_time{1.0f/fps};        // in seconds (e.g., 30 Hz => 0.03333)

@@ -14,6 +14,22 @@ SDL_Window* Game::window{};
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+   //added error checking from previous assignment as well
+
+
+   //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
+   luaInterpreterState.script_file("config.lua");
+   auto gameobjs = luaInterpreterState["gameobjs"];
+
+   //check to see if config file was loaded correctly
+   if(!gameobjs.valid()){
+         is_running = false;
+         SDL_Quit();
+         throw std::runtime_error("Loading of Lua Config File Failed");
+   }
+   std::cout << "Lua Config File Loaded..." << std::endl;
+
+
    Uint32 flags{};
    if (fullscreen) {
       flags = SDL_WINDOW_FULLSCREEN;
@@ -25,14 +41,28 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
       if (window) {
          std::cout << "Window created..." << std::endl;
       }
+      else{//if window wasn't created, destroy, quit, and throw exception... destroying all items just to be sure
+         is_running = false;
+         SDL_Quit();
+         throw std::runtime_error("Window Constructor Failed");
+      }
       renderer = SDL_CreateRenderer(window, -1, 0);
       if (renderer) {
          SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
          std::cout << "Renderer created..." << std::endl;
       }
+      else{//if renderer wasn't created, destroy, quit, and throw exception... destroying all items just to be sure
+         is_running = false;
+	      SDL_DestroyWindow(window);
+         SDL_Quit();
+         throw std::runtime_error("Renderer Constructor Failed");
+      }
+   
    is_running = true;
-   } else {
+   } else {//if SDL wasn't initialized, destroy, quit, and throw exception... destroying all items just to be sure
       is_running = false;
+      SDL_Quit();
+      throw std::runtime_error("SDL Initializaion Failed");
    }
 }
 

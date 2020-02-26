@@ -29,6 +29,8 @@ private:
    int counter{};
    bool is_running{};
    std::vector<std::unique_ptr<GameObject>> game_objs;
+   static sol::state luaInterpreterState;
+
 };
 
 #endif
