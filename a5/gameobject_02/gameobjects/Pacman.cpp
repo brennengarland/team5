@@ -6,9 +6,12 @@
 
 #include <iostream>
 
-Pacman::Pacman(const float xpos, const float ypos, const float xvel, const float yvel): GameObject("../assets/images/pacman/pacman_32x32.png", xpos, ypos, xvel, yvel)
-        {
-        }
+
+Pacman::Pacman(const float xpos, const float ypos,const float xvel, const float yvel)
+: xpos(xpos), ypos(ypos), xvel(xvel), yvel(yvel)
+{
+   texture = sdl_utils::load_texture("../assets/images/pacman/pacman_32x32.png");
+}
 
 Pacman::~Pacman()
 {

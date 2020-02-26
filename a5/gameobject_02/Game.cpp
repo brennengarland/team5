@@ -79,7 +79,7 @@ Game::~Game()
 void Game::load_level()
 {
    auto chopper = std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f);
-   auto tank = std::make_unique<Tank>0.0f, 0.0f, 0.5f, 0.5f);
+   auto tank = std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f);
    auto pacman = std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f);
 
    game_objs.emplace_back(std::move(chopper));
