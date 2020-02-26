@@ -20,14 +20,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
    luaInterpreterState.script_file("config.lua");
-   auto gameobjs = luaInterpreterState["gameobjs"];
-
-   //check to see if config file was loaded correctly
-   if(!gameobjs.valid()){
-         is_running = false;
-         SDL_Quit();
-         throw std::runtime_error("Loading of Lua Config File Failed");
-   }
+   luaInterpreterState.set_function("Throw_Exception", void (){
+      throw std::runtime_error("Lua Error!");
+   });
    std::cout << "Lua Config File Loaded..." << std::endl;
 
 
@@ -82,7 +77,16 @@ void Game::load_level()
    // auto tank = std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f);
    // auto pacman = std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f);
    //iterate of game_objs
-   for( auto& newObject : game_objs )
+   auto luagameobjs = luaInterpreterState["gameobjs"];
+   
+   
+   //check to see if config file was loaded correctly
+   if(!luagameobjs.valid()){
+         is_running = false;
+         SDL_Quit();
+         throw std::runtime_error("Loading of Lua Config File Failed");
+   }
+   for( auto& newObject : game_objs ){
       if(newObject["kind"] == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
       else if(newObject["kind"] == "tank")
@@ -92,7 +96,7 @@ void Game::load_level()
       else {//one item failed to load correctly
          throw std::runtime_error("Failed to load an item from the config file");
       }
-
+   }
       
    //throw exception
    // game_objs.emplace_back(std::move(chopper));
