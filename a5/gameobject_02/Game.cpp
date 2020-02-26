@@ -20,9 +20,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
    luaInterpreterState.script_file("config.lua");
-   luaInterpreterState.set_function("Throw_Exception", void (){
-      throw std::runtime_error("Lua Error!");
-   });
+   luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
 
@@ -133,3 +131,6 @@ void Game::render()
    SDL_RenderPresent(renderer);
 }
 
+void Throw_Lua_Exception() {
+	throw std::runtime_error("Lua Error, please check config.lua for syntax errors");
+}
