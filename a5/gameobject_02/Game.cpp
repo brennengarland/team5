@@ -98,27 +98,27 @@ void Game::load_level()
       //get values and check for misloads
 
       //kind
-      if(!luagameobjs["player" + std::to_string(i)]["kind"].valid)
+      if(!luagameobjs["player" + std::to_string(i)]["kind"].valid())
          throw std::runtime_error("Failed to load an kind for an item");
       std::string kind = luagameobjs["player" + std::to_string(i)]["kind"];
 
       //xpos
-      if(!luagameobjs["player" + std::to_string(i)]["xpos"].valid)
+      if(!luagameobjs["player" + std::to_string(i)]["xpos"].valid())
          throw std::runtime_error("Failed to load an xpos for an item");
       float xposIn = luagameobjs["player" + std::to_string(i)]["xpos"];
 
       //ypos
-      if(!luagameobjs["player" + std::to_string(i)]["ypos"].valid)
+      if(!luagameobjs["player" + std::to_string(i)]["ypos"].valid())
          throw std::runtime_error("Failed to load an ypos for an item");
       float yposIn = luagameobjs["player" + std::to_string(i)]["ypos"];
 
       //xvel
-      if(!luagameobjs["player" + std::to_string(i)]["xvel"].valid)
+      if(!luagameobjs["player" + std::to_string(i)]["xvel"].valid())
          throw std::runtime_error("Failed to load an xvel for an item");
       float xvelIn = luagameobjs["player" + std::to_string(i)]["xvel"];
 
       //yvel
-      if(!luagameobjs["player" + std::to_string(i)]["yvel"].valid)
+      if(!luagameobjs["player" + std::to_string(i)]["yvel"].valid())
          throw std::runtime_error("Failed to load an yvel for an item");
       float yvelIn = luagameobjs["player" + std::to_string(i)]["yvel"];
 
