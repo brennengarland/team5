@@ -9,6 +9,7 @@
 #include "gameobjects/Tank.hpp"
 #include "gameobjects/Pacman.hpp"
 
+sol::state luaInterpreterState;
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
 
