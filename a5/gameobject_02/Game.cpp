@@ -97,7 +97,7 @@ void Game::load_level()
    if(!luagameobjs.valid()){
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
-   std::cout << (luagameobjs["player" + std::to_string(i)]["kind"]);
+   std::cout << (luagameobjs["player" + std::to_string(0)]["kind"]);
    for( int i = 1; i < counter + 1; i++ ){
       if(luagameobjs["player" + std::to_string(i)]["kind"] == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(luagameobjs["player" + std::to_string(i)]["xpos"], luagameobjs["player" + std::to_string(i)]["ypos"], luagameobjs["player" + std::to_string(i)]["xvel"], luagameobjs["player" + std::to_string(i)]["yvel"])));
