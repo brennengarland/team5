@@ -86,24 +86,40 @@ Game::~Game()
 
 void Game::load_level()
 {
-   // auto chopper = std::make_unique<Chopper>(50.0f, 50.0f, 0.5f, 0.5f);
-   // auto tank = std::make_unique<Tank>(0.0f, 0.0f, 0.5f, 0.5f);
-   // auto pacman = std::make_unique<Pacman>(100.0f, 100.0f, 0.5f, 0.5f);
+
    //iterate of game_objs
    auto luagameobjs = luaInterpreterState["gameobjs"];
-   
-   
    //check to see if config file was loaded correctly
    if(!luagameobjs.valid()){
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
 
    for( int i = 1; i < counter + 1; i++ ){
-      //get values
+      //get values and check for misloads
+
+      //kind
+      if(!luagameobjs["player" + std::to_string(i)]["kind"].valid)
+         throw std::runtime_error("Failed to load an kind for an item");
       std::string kind = luagameobjs["player" + std::to_string(i)]["kind"];
+
+      //xpos
+      if(!luagameobjs["player" + std::to_string(i)]["xpos"].valid)
+         throw std::runtime_error("Failed to load an xpos for an item");
       float xposIn = luagameobjs["player" + std::to_string(i)]["xpos"];
+
+      //ypos
+      if(!luagameobjs["player" + std::to_string(i)]["ypos"].valid)
+         throw std::runtime_error("Failed to load an ypos for an item");
       float yposIn = luagameobjs["player" + std::to_string(i)]["ypos"];
+
+      //xvel
+      if(!luagameobjs["player" + std::to_string(i)]["xvel"].valid)
+         throw std::runtime_error("Failed to load an xvel for an item");
       float xvelIn = luagameobjs["player" + std::to_string(i)]["xvel"];
+
+      //yvel
+      if(!luagameobjs["player" + std::to_string(i)]["yvel"].valid)
+         throw std::runtime_error("Failed to load an yvel for an item");
       float yvelIn = luagameobjs["player" + std::to_string(i)]["yvel"];
 
       if(kind == "chopper")
@@ -112,15 +128,12 @@ void Game::load_level()
          game_objs.emplace_back(std::move(std::make_unique<Tank>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "pacman")
          game_objs.emplace_back(std::move(std::make_unique<Pacman>(xposIn, yposIn, xvelIn, yvelIn)));
-      else {//one item failed to load correctly
-         throw std::runtime_error("Failed to load an item from the config file");
+      else {//one item failed to load correctly because kind wasn't matched
+         throw std::runtime_error("Failed to load an item from the config file, couldn't match kind");
       }
    }
       
-   //throw exception
-   // game_objs.emplace_back(std::move(chopper));
-   // game_objs.emplace_back(std::move(tank));
-   // game_objs.emplace_back(std::move(pacman));
+
 }
 
 void Game::handle_events()
