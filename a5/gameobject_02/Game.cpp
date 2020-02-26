@@ -89,7 +89,7 @@ void Game::load_level()
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
    int numberOfItems = luaInterpreterState["#gameobjs"];
-   std::cout << "\n\n" + numberOfItems + "\n\n";
+   std::cout << "\n\n" << numberOfItems << "\n\n";
    // for( auto& newObject : luagameobjs ){
    //    if(newObject["kind"] == "chopper")
    //       game_objs.emplace_back(std::move(std::make_unique<Chopper>(newObject["xpos"], newObject["ypos"], newObject["xvel"], newObject["yvel"])));
