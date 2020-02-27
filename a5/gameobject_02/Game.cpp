@@ -116,13 +116,14 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(const sol::table& row : luagameobjs){
+   for(const auto& table : luagameobjs){
 
       //get values and check for misloads
 
 
       //CHANGE to slide 11 page 15
       //kind
+      sol::table row = table;
       std::string kind = "";
       float xposIn = 0;
       float yposIn = 0;
