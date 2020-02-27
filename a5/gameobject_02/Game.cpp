@@ -112,7 +112,7 @@ void Game::load_level()
    auto luagameobjs = luaInterpreterState["gameobjs"];
    //check to see if config file was loaded correctly
    if(!luagameobjs.valid()){
-         throw std::runtime_error("Loading of Lua Config File Failed");
+         throw std::runtime_error("Loading of gameobjs in Lua Config File Failed");
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
@@ -125,27 +125,27 @@ void Game::load_level()
       //kind
       if(!item.first.valid())
          throw std::runtime_error("Failed to load an kind for an item");
-      std::string kind = item.first;
+      std::string kind = item.first<std::string>();
 
       //xpos
       if(!item.second.valid())
          throw std::runtime_error("Failed to load an xpos for an item");
-      float xposIn = item.second;
+      float xposIn = item.second<float>();
 
       //ypos
       if(!item.third.valid())
          throw std::runtime_error("Failed to load an ypos for an item");
-      float yposIn = item.third;
+      float yposIn = item.third<float>();
 
       //xvel
       if(!item.fourth.valid())
          throw std::runtime_error("Failed to load an xvel for an item");
-      float xvelIn = item.fourth;
+      float xvelIn = item.fourth<float>();
 
       //yvel
       if(!item.fifth.valid())
          throw std::runtime_error("Failed to load an yvel for an item");
-      float yvelIn = item.fifth;
+      float yvelIn = item.fifth.as<float>();
 
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
