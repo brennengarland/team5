@@ -116,7 +116,7 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(const sol::table& row : luagameobjs){
+   for(const auto& row : luagameobjs){
 
       //get values and check for misloads
 
@@ -128,19 +128,29 @@ void Game::load_level()
       }
       std::string kind = row.second["kind"];
 
-      float xposIn = row["xpos"];
-      if(!row["kind"].valid()){
+      //xpos
+      if(!row.second["xpos"].valid()){
+         throw std::runtime_error("Failed to load kind");
+      }      
+      float xposIn = row.second["xpos"];
+
+      //ypos
+      if(!row.second["ypos"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float yposIn = row["ypos"];
-      if(!row["kind"].valid()){
+      float yposIn = row.second["ypos"];
+
+      //xvel
+      if(!row.second["xvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float xvelIn = row["xvel"];
-      if(!row["kind"].valid()){
+      float xvelIn = row.second["xvel"];
+
+      //yvel
+      if(!row.second["yvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float yvelIn = row["yvel"];
+      float yvelIn = row.second["yvel"];
       // for(const auto& item : row){
       //    if(!item.first.valid())
       //       throw std::runtime_error("Failed to load an key for an item value");
