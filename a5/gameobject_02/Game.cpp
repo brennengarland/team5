@@ -116,17 +116,17 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(sol::table& row : luagameobjs){
+   for(const sol::table& row : luagameobjs){
 
       //get values and check for misloads
 
 
       //CHANGE to slide 11 page 15
       //kind
-      if(!row["kind"].valid()){
+      if(!row.second["kind"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      std::string kind = row["kind"];
+      std::string kind = row.second["kind"];
 
       float xposIn = row["xpos"];
       if(!row["kind"].valid()){
