@@ -11,7 +11,7 @@ int main() {
 
    std::cout << "Creating game" << std::endl;
    std::unique_ptr<Game> game;
-   //try catch error catcher
+   //game initialization try catch error checker
    try{
       game = std::make_unique<Game>("1st Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
    }
@@ -21,7 +21,7 @@ int main() {
 	   exit(0);
    }   
 
-   //try to load items
+   //load level try catch error checker
    try{
       game->load_level();
    }
