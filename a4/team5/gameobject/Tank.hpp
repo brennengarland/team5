@@ -1,6 +1,8 @@
+#ifndef __TANK_HPP__
+#define __TANK_HPP__
+
 #include "GameObject.hpp"
-#include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 class Tank : public GameObject{
 	public:
@@ -12,11 +14,13 @@ class Tank : public GameObject{
     Tank(const char* x, const float xpos, const float ypos, const float xvel, const float yvel): GameObject(x, xpos, ypos, xvel, yvel)
         {
         }
-
-    void update(const float dt);
-    void render();
+    ~Tank();
+    virtual void update(const float dt) override;
+    virtual void render() override;
 
     private:
 
 	
 };
+#endif
+

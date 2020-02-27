@@ -123,6 +123,8 @@ void Game::load_level()
    for( int i = 1; i < counter + 1; i++ ){
       //get values and check for misloads
 
+
+      //CHANGE to slide 11 page 15
       //kind
       if(!luagameobjs["player" + std::to_string(i)]["kind"].valid())
          throw std::runtime_error("Failed to load an kind for an item");

@@ -1,7 +1,6 @@
 
 #include "GameObject.hpp"
-#include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 GameObject::GameObject(const char* filename_img,
                        const float xpos, const float ypos,
@@ -10,6 +9,7 @@ GameObject::GameObject(const char* filename_img,
 {
    texture = texture::load_texture(filename_img);
 }
+
 
 GameObject::~GameObject()
 {

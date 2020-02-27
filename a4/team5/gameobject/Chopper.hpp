@@ -1,6 +1,8 @@
+#ifndef __CHOPPER_HPP__
+#define __CHOPPER_HPP__
+
 #include "GameObject.hpp"
-#include "texture_utils.hpp"
-#include "Game.hpp"
+
 
 class Chopper : public GameObject{
 	public:
@@ -13,11 +15,12 @@ class Chopper : public GameObject{
         {
         }
 
-    
-    void update(const float dt);
-    void render();
-
+    virtual void update(const float dt) override;
+    virtual void render() override;
+    ~Chopper();
     private:
 
 	
 };
+#endif
+

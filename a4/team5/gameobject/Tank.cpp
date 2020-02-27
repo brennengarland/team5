@@ -1,6 +1,7 @@
 
 
 #include "Tank.hpp"
+#include "Game.hpp"
 
 
 void Tank::update(const float dt)
@@ -22,4 +23,9 @@ void Tank::update(const float dt)
 void Tank::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
+}
+
+Tank::~Tank()
+{
+   SDL_DestroyTexture(texture);
 }

@@ -1,22 +1,17 @@
 
 #include "Game.hpp"
-#include "Tank.cpp"
-#include "Pacman.cpp"
-#include "Chopper.cpp"
-
+#include "Tank.hpp"
+#include "Pacman.hpp"
+#include "Chopper.hpp"
 #include <iostream>
-#include "SDL2/SDL_image.h"
 
-#include "texture_utils.hpp"
-#include "GameObject.hpp"
+
 
 
 SDL_Renderer* Game::renderer{};
 SDL_Window* Game::window{};
 
-GameObject* tank{};
-GameObject* chopper{};
-GameObject* pacman{};
+
 
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -48,11 +43,8 @@ Game::~Game()
    SDL_DestroyWindow(window);
    SDL_Quit();
 
-   for(auto & object : game_objects) {
-      object.reset();
-   }
-   //clear vector
-   game_objects.clear();
+   //vector delete out of scope and unique points inside vector will automatically clean up
+   
 
    std::cout << "Game cleaned..." << std::endl;
 }

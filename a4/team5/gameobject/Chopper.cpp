@@ -1,6 +1,7 @@
 
 
 #include "Chopper.hpp"
+#include "Game.hpp"
 
 
 void Chopper::update(const float dt)
@@ -22,4 +23,9 @@ void Chopper::update(const float dt)
 void Chopper::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
+}
+
+Chopper::~Chopper()
+{
+   SDL_DestroyTexture(texture);
 }

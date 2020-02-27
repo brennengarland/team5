@@ -1,7 +1,7 @@
 
 
 #include "Pacman.hpp"
-
+#include "Game.hpp"
 
 void Pacman::update(const float dt)
 {
@@ -22,4 +22,9 @@ void Pacman::update(const float dt)
 void Pacman::render()
 {
    SDL_RenderCopy(Game::renderer, texture, &src_rect, &dest_rect);
+}
+
+Pacman::~Pacman()
+{
+   SDL_DestroyTexture(texture);
 }
