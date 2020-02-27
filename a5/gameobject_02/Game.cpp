@@ -125,7 +125,7 @@ void Game::load_level()
       //kind
       if(!item.first.valid())
          throw std::runtime_error("Failed to load an kind for an item");
-      sol::object kindSol = item.first;
+      sol::object kindSol = item[0];
       std::string kind = kindSol.as<std::string>();
 
       //xpos
