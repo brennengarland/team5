@@ -131,22 +131,26 @@ void Game::load_level()
       //xpos
       if(!item.second.valid())
          throw std::runtime_error("Failed to load an xpos for an item");
-      float xposIn = item.second.as<float>();
+      sol::object xposInSol = item.second;
+      float xposIn = xposInSol.as<float>();
 
       //ypos
       if(!item.third.valid())
          throw std::runtime_error("Failed to load an ypos for an item");
-      float yposIn = item.third.as<float>();
+      sol::object yposInSol = item.third;
+      float yposIn = yposInSol.as<float>();
 
       //xvel
       if(!item.fourth.valid())
          throw std::runtime_error("Failed to load an xvel for an item");
-      float xvelIn = item.fourth.as<float>();
+      sol::object xvelInSol = item.fourth;
+      float xvelIn = xvelInSol.as<float>();
 
       //yvel
       if(!item.fifth.valid())
          throw std::runtime_error("Failed to load an yvel for an item");
-      float yvelIn = item.fifth.as<float>();
+      sol::object yvelInSol = item.fifth;
+      float yvelIn = yvelInSol.as<float>();
 
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
