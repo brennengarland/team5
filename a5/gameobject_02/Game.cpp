@@ -137,23 +137,23 @@ void Game::load_level()
          if(!item.second.valid())
             throw std::runtime_error("Failed to load an key for an item value");
          sol::object itemValueSol = item.second;
-         std::string itemValue = itemValueSol.as<std::string>();
+         //std::string itemValue = itemValueSol.as<std::string>();
 
          //kind
          if(itemKey == "kind"){
-            kind = itemValue.as<std::string>();
+            kind = itemValueSol.as<std::string>();
          }
          else if(itemKey == "xpos"){
-            xposIn = itemValue.as<float>();
+            xposIn = itemValueSol.as<float>();
          }
          else if(itemKey == "ypos"){
-            yposIn = itemValue.as<float>();
+            yposIn = itemValueSol.as<float>();
          }         
          else if(itemKey == "xvel"){
-            xvelIn = itemValue.as<float>();
+            xvelIn = itemValueSol.as<float>();
          }         
          else if(itemKey == "yvel"){
-            yvelIn = itemValue.as<float>();
+            yvelIn = itemValueSol.as<float>();
          }
 
  
