@@ -125,22 +125,22 @@ void Game::load_level()
       //kind
       if(!item.first.valid())
          throw std::runtime_error("Failed to load an kind for an item");
-      std::string kind = item.first<std::string>();
+      std::string kind = item.first.as<std::string>();
 
       //xpos
       if(!item.second.valid())
          throw std::runtime_error("Failed to load an xpos for an item");
-      float xposIn = item.second<float>();
+      float xposIn = item.second.as<float>();
 
       //ypos
       if(!item.third.valid())
          throw std::runtime_error("Failed to load an ypos for an item");
-      float yposIn = item.third<float>();
+      float yposIn = item.third.as<float>();
 
       //xvel
       if(!item.fourth.valid())
          throw std::runtime_error("Failed to load an xvel for an item");
-      float xvelIn = item.fourth<float>();
+      float xvelIn = item.fourth.as<float>();
 
       //yvel
       if(!item.fifth.valid())
