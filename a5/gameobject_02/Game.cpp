@@ -119,10 +119,15 @@ void Game::load_level()
    for(const auto& table : luagameobjs){
 
       //get values and check for misloads
-
-      sol::table row = table;
+      std::string kind = "";
+      float xposIn = 0;
+      float yposIn = 0;
+      float xvelIn = 0;
+      float yvelIn = 0;
+      sol::table row = table.second;
       //CHANGE to slide 11 page 15
       //kind
+      sol::object itemKeySol = item.first;
       if(!row.second["kind"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
@@ -132,53 +137,26 @@ void Game::load_level()
       if(!row.second["xpos"].valid()){
          throw std::runtime_error("Failed to load kind");
       }      
-      float xposIn = row.second["xpos"];
+      xposIn = row.second["xpos"];
 
       //ypos
       if(!row.second["ypos"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float yposIn = row.second["ypos"];
+      yposIn = row.second["ypos"];
 
       //xvel
       if(!row.second["xvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float xvelIn = row.second["xvel"];
+      xvelIn = row.second["xvel"];
 
       //yvel
       if(!row.second["yvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      float yvelIn = row.second["yvel"];
-      // for(const auto& item : row){
-      //    if(!item.first.valid())
-      //       throw std::runtime_error("Failed to load an key for an item value");
-      //    sol::object itemKeySol = item.first;
-      //    std::string itemKey = itemKeySol.as<std::string>();
-
-      //    if(!item.second.valid())
-      //       throw std::runtime_error("Failed to load an key for an item value");
-      //    sol::object itemValueSol = item.second;
-      //    //std::string itemValue = itemValueSol.as<std::string>();
-
-      //    //kind
-      //    if(itemKey == "kind"){
-      //       kind = itemValueSol.as<std::string>();
-      //    }
-      //    else if(itemKey == "xpos"){
-      //       xposIn = itemValueSol.as<float>();
-      //    }
-      //    else if(itemKey == "ypos"){
-      //       yposIn = itemValueSol.as<float>();
-      //    }         
-      //    else if(itemKey == "xvel"){
-      //       xvelIn = itemValueSol.as<float>();
-      //    }         
-      //    else if(itemKey == "yvel"){
-      //       yvelIn = itemValueSol.as<float>();
-      //    }
-      // }
+      yvelIn = row.second["yvel"];
+      
 
 
       if(kind == "chopper")
