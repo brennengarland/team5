@@ -116,42 +116,48 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(const auto& item : luagameobjs){
+   for(const auto& row : luagameobjs){
 
       //get values and check for misloads
 
 
       //CHANGE to slide 11 page 15
       //kind
-      if(!item.first.valid())
-         throw std::runtime_error("Failed to load an kind for an item");
-      sol::object kindSol = item[0];
-      std::string kind = kindSol.as<std::string>();
+      std::string kind = "";
+      float xposIn = 0;
+      float yposIn = 0;
+      float xvelIn = 0;
+      float yvelIn = 0;
+      for(const auto& item : row){
+         if(!item.first.valid())
+            throw std::runtime_error("Failed to load an key for an item value");
+         sol::object itemKeySol = item.first;
+         std::string itemKey = itemKeySol.as<std::string>();
 
-      //xpos
-      if(!item.second.valid())
-         throw std::runtime_error("Failed to load an xpos for an item");
-      sol::object xposInSol = item.second;
-      float xposIn = xposInSol.as<float>();
+         if(!item.second.valid())
+            throw std::runtime_error("Failed to load an key for an item value");
+         sol::object itemValueSol = item.second;
+         std::string itemValue = itemValueSol.as<std::string>();
 
-      //ypos
-      if(!item.third.valid())
-         throw std::runtime_error("Failed to load an ypos for an item");
-      sol::object yposInSol = item.third;
-      float yposIn = yposInSol.as<float>();
+         //kind
+         if(itemKey == "kind"){
+            kind = itemValue;
+         }
+         else if(itemKey == "xpos"){
+            xposIn = itemValue;
+         }
+         else if(itemKey == "ypos"){
+            yposIn = itemValue;
+         }         
+         else if(itemKey == "xvel"){
+            xvelIn = itemValue;
+         }         
+         else if(itemKey == "yvel"){
+            yvelIn = itemValue;
+         }
 
-      //xvel
-      if(!item.fourth.valid())
-         throw std::runtime_error("Failed to load an xvel for an item");
-      sol::object xvelInSol = item.fourth;
-      float xvelIn = xvelInSol.as<float>();
-
-      //yvel
-      if(!item.fifth.valid())
-         throw std::runtime_error("Failed to load an yvel for an item");
-      sol::object yvelInSol = item.fifth;
-      float yvelIn = yvelInSol.as<float>();
-
+ 
+      }
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "tank")
