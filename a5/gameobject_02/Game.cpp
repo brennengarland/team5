@@ -127,11 +127,10 @@ void Game::load_level()
       sol::table row = table.second;
       //CHANGE to slide 11 page 15
       //kind
-      sol::object itemKeySol = item.first;
       if(!row["kind"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      std::string kind = row["kind"];
+      kind = row["kind"];
 
       //xpos
       if(!row["xpos"].valid()){
