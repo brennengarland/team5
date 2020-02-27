@@ -128,34 +128,34 @@ void Game::load_level()
       //CHANGE to slide 11 page 15
       //kind
       sol::object itemKeySol = item.first;
-      if(!row.second["kind"].valid()){
+      if(!row["kind"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      std::string kind = row.second["kind"];
+      std::string kind = row["kind"];
 
       //xpos
-      if(!row.second["xpos"].valid()){
+      if(!row["xpos"].valid()){
          throw std::runtime_error("Failed to load kind");
       }      
-      xposIn = row.second["xpos"];
+      xposIn = row["xpos"];
 
       //ypos
-      if(!row.second["ypos"].valid()){
+      if(!row["ypos"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      yposIn = row.second["ypos"];
+      yposIn = row["ypos"];
 
       //xvel
-      if(!row.second["xvel"].valid()){
+      if(!row["xvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      xvelIn = row.second["xvel"];
+      xvelIn = row["xvel"];
 
       //yvel
-      if(!row.second["yvel"].valid()){
+      if(!row["yvel"].valid()){
          throw std::runtime_error("Failed to load kind");
       }
-      yvelIn = row.second["yvel"];
+      yvelIn = row["yvel"];
       
 
 
