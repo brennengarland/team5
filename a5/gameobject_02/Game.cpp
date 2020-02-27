@@ -23,10 +23,6 @@ void Throw_Lua_Exception() {
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
    //added error checking from previous assignment as well
-
-
-   //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
-
    //open libraries
    try{
       luaInterpreterState.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
@@ -48,14 +44,9 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
 	}
 
-   //initialize count to 0
-   //luaInterpreterState.script("count = 0");
-   //get count of table
-   //luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
-   //check for lua table counter error
-   //if(!luaInterpreterState["count"].valid())
-   //   throw std::runtime_error("Failed to load table count in lua...");
-   //counter = luaInterpreterState["count"];
+   //***Was initializing counter here to iterate, but we switched to a different iterating method for load_level()***
+
+   //set a function to throw an exception if lua errors happen
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
@@ -108,14 +99,13 @@ Game::~Game()
 void Game::load_level()
 {
 
-   //iterate of game_objs
-   sol::table luagameobjs = luaInterpreterState["gameobjs"];
-   //check to see if config file was loaded correctly
-   if(!luagameobjs.valid()){
+   //check to see if table can be loaded from config file
+   if(!luaInterpreterState["gameobjs"].valid()){
          throw std::runtime_error("Loading of gameobjs in Lua Config File Failed");
    }
+   sol::table luagameobjs = luaInterpreterState["gameobjs"];
 
-   //for( int i = 1; i < counter + 1; i++ ){
+   //iterate over table
    for(const auto& table : luagameobjs){
 
       //get values and check for misloads
@@ -124,48 +114,54 @@ void Game::load_level()
       float yposIn = 0;
       float xvelIn = 0;
       float yvelIn = 0;
+      if(!table.second.valid()){
+         throw std::runtime_error("Failed to load a row in the gameobjs table");
+      }
       sol::table row = table.second;
-      //CHANGE to slide 11 page 15
+
+      //CHANGED to slide deck 11 page 15 iterating method
       //kind
       if(!row["kind"].valid()){
-         throw std::runtime_error("Failed to load kind");
+         throw std::runtime_error("Failed to load kind in an item");
       }
       kind = row["kind"];
 
       //xpos
       if(!row["xpos"].valid()){
-         throw std::runtime_error("Failed to load kind");
+         throw std::runtime_error("Failed to load xpos in an item");
       }      
       xposIn = row["xpos"];
 
       //ypos
       if(!row["ypos"].valid()){
-         throw std::runtime_error("Failed to load kind");
+         throw std::runtime_error("Failed to load ypos in an item");
       }
       yposIn = row["ypos"];
 
       //xvel
       if(!row["xvel"].valid()){
-         throw std::runtime_error("Failed to load kind");
+         throw std::runtime_error("Failed to load xvel in an item");
       }
       xvelIn = row["xvel"];
 
       //yvel
       if(!row["yvel"].valid()){
-         throw std::runtime_error("Failed to load kind");
+         throw std::runtime_error("Failed to load yvel in an item");
       }
       yvelIn = row["yvel"];
       
 
-
+      //create game objects
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "tank")
          game_objs.emplace_back(std::move(std::make_unique<Tank>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "pacman")
          game_objs.emplace_back(std::move(std::make_unique<Pacman>(xposIn, yposIn, xvelIn, yvelIn)));
-      else {//one item failed to load correctly because kind wasn't matched
-         throw std::runtime_error("Failed to load an item from the config file, couldn't match kind");
+      else {
+         //one item failed to load correctly because kind wasn't matched
+         //won't throw an exception, but will let the user know
+         std::cout << "\nOne of the Item's kind did not match Pacman, Chopper, or Tank...Couldn't create item...\n";
       }
    }
       
