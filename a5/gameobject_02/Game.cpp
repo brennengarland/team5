@@ -116,49 +116,52 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(const auto& table : luagameobjs){
+   for(const auto& row : luagameobjs){
 
       //get values and check for misloads
 
 
       //CHANGE to slide 11 page 15
       //kind
-      sol::table row = table;
-      std::string kind = "";
-      float xposIn = 0;
-      float yposIn = 0;
-      float xvelIn = 0;
-      float yvelIn = 0;
-      for(const auto& item : row){
-         if(!item.first.valid())
-            throw std::runtime_error("Failed to load an key for an item value");
-         sol::object itemKeySol = item.first;
-         std::string itemKey = itemKeySol.as<std::string>();
-
-         if(!item.second.valid())
-            throw std::runtime_error("Failed to load an key for an item value");
-         sol::object itemValueSol = item.second;
-         //std::string itemValue = itemValueSol.as<std::string>();
-
-         //kind
-         if(itemKey == "kind"){
-            kind = itemValueSol.as<std::string>();
-         }
-         else if(itemKey == "xpos"){
-            xposIn = itemValueSol.as<float>();
-         }
-         else if(itemKey == "ypos"){
-            yposIn = itemValueSol.as<float>();
-         }         
-         else if(itemKey == "xvel"){
-            xvelIn = itemValueSol.as<float>();
-         }         
-         else if(itemKey == "yvel"){
-            yvelIn = itemValueSol.as<float>();
-         }
-
- 
+      if(!row["kind"].valid()){
+         throw std::runtime_error("Failed to load kind");
       }
+      std::string kind = row["kind"];
+
+      float xposIn = row["xpos"];
+      float yposIn = row["ypos"];
+      float xvelIn = row["xvel"];
+      float yvelIn = row["yvel"];
+      // for(const auto& item : row){
+      //    if(!item.first.valid())
+      //       throw std::runtime_error("Failed to load an key for an item value");
+      //    sol::object itemKeySol = item.first;
+      //    std::string itemKey = itemKeySol.as<std::string>();
+
+      //    if(!item.second.valid())
+      //       throw std::runtime_error("Failed to load an key for an item value");
+      //    sol::object itemValueSol = item.second;
+      //    //std::string itemValue = itemValueSol.as<std::string>();
+
+      //    //kind
+      //    if(itemKey == "kind"){
+      //       kind = itemValueSol.as<std::string>();
+      //    }
+      //    else if(itemKey == "xpos"){
+      //       xposIn = itemValueSol.as<float>();
+      //    }
+      //    else if(itemKey == "ypos"){
+      //       yposIn = itemValueSol.as<float>();
+      //    }         
+      //    else if(itemKey == "xvel"){
+      //       xvelIn = itemValueSol.as<float>();
+      //    }         
+      //    else if(itemKey == "yvel"){
+      //       yvelIn = itemValueSol.as<float>();
+      //    }
+      // }
+
+
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
       else if(kind == "tank")
