@@ -27,7 +27,6 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 
    //initilize lua. Must be done here rather than in update so that it is not reinitialized on each update
 
-	luaInterpreterState.open_libraries(sol::lib::base);
    //open libraries
    try{
       luaInterpreterState.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string, sol::lib::math, sol::lib::io);
@@ -50,20 +49,16 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 	}
 
    //initialize count to 0
-   luaInterpreterState.script("count = 0");
+   //luaInterpreterState.script("count = 0");
    //get count of table
-   luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
+   //luaInterpreterState.script("for _ in pairs(gameobjs) do count = count + 1 end");
    //check for lua table counter error
-   if(!luaInterpreterState["count"].valid())
-      throw std::runtime_error("Failed to load table count in lua...");
-   counter = luaInterpreterState["count"];
+   //if(!luaInterpreterState["count"].valid())
+   //   throw std::runtime_error("Failed to load table count in lua...");
+   //counter = luaInterpreterState["count"];
    luaInterpreterState.set_function("Throw_Exception", &Throw_Lua_Exception);
    std::cout << "Lua Config File Loaded..." << std::endl;
 
-   //throw exception if no objects counted
-   if(counter == 0){
-      throw std::runtime_error("No Objects in lua table?");
-   }
 
    Uint32 flags{};
    if (fullscreen) {
@@ -120,35 +115,37 @@ void Game::load_level()
          throw std::runtime_error("Loading of Lua Config File Failed");
    }
 
-   for( int i = 1; i < counter + 1; i++ ){
+   //for( int i = 1; i < counter + 1; i++ ){
+   for( const auto& item :  luagameobjs){
+
       //get values and check for misloads
 
 
       //CHANGE to slide 11 page 15
       //kind
-      if(!luagameobjs["player" + std::to_string(i)]["kind"].valid())
+      if(!item.first.valid())
          throw std::runtime_error("Failed to load an kind for an item");
-      std::string kind = luagameobjs["player" + std::to_string(i)]["kind"];
+      std::string kind = item.first;
 
       //xpos
-      if(!luagameobjs["player" + std::to_string(i)]["xpos"].valid())
+      if(!item.second.valid())
          throw std::runtime_error("Failed to load an xpos for an item");
-      float xposIn = luagameobjs["player" + std::to_string(i)]["xpos"];
+      float xposIn = item.second;
 
       //ypos
-      if(!luagameobjs["player" + std::to_string(i)]["ypos"].valid())
+      if(!item.third.valid())
          throw std::runtime_error("Failed to load an ypos for an item");
-      float yposIn = luagameobjs["player" + std::to_string(i)]["ypos"];
+      float yposIn = item.third;
 
       //xvel
-      if(!luagameobjs["player" + std::to_string(i)]["xvel"].valid())
+      if(!item.fourth.valid())
          throw std::runtime_error("Failed to load an xvel for an item");
-      float xvelIn = luagameobjs["player" + std::to_string(i)]["xvel"];
+      float xvelIn = item.fourth;
 
       //yvel
-      if(!luagameobjs["player" + std::to_string(i)]["yvel"].valid())
+      if(!item.fifth.valid())
          throw std::runtime_error("Failed to load an yvel for an item");
-      float yvelIn = luagameobjs["player" + std::to_string(i)]["yvel"];
+      float yvelIn = item.fifth;
 
       if(kind == "chopper")
          game_objs.emplace_back(std::move(std::make_unique<Chopper>(xposIn, yposIn, xvelIn, yvelIn)));
