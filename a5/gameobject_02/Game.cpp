@@ -109,14 +109,14 @@ void Game::load_level()
 {
 
    //iterate of game_objs
-   auto luagameobjs = luaInterpreterState["gameobjs"];
+   sol::table luagameobjs = luaInterpreterState["gameobjs"];
    //check to see if config file was loaded correctly
    if(!luagameobjs.valid()){
          throw std::runtime_error("Loading of gameobjs in Lua Config File Failed");
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for( const auto& item :  luagameobjs){
+   for(const auto& item : luagameobjs){
 
       //get values and check for misloads
 
