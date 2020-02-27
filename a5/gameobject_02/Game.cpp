@@ -141,19 +141,19 @@ void Game::load_level()
 
          //kind
          if(itemKey == "kind"){
-            kind = itemValue;
+            kind = itemValue.as<std::string>();
          }
          else if(itemKey == "xpos"){
-            xposIn = itemValue;
+            xposIn = itemValue.as<float>();
          }
          else if(itemKey == "ypos"){
-            yposIn = itemValue;
+            yposIn = itemValue.as<float>();
          }         
          else if(itemKey == "xvel"){
-            xvelIn = itemValue;
+            xvelIn = itemValue.as<float>();
          }         
          else if(itemKey == "yvel"){
-            yvelIn = itemValue;
+            yvelIn = itemValue.as<float>();
          }
 
  
