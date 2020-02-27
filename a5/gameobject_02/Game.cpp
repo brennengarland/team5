@@ -116,7 +116,7 @@ void Game::load_level()
    }
 
    //for( int i = 1; i < counter + 1; i++ ){
-   for(const sol::table& row : luagameobjs){
+   for(sol::table& row : luagameobjs){
 
       //get values and check for misloads
 
