@@ -40,3 +40,8 @@ void Entity::list_all_components() const
    }
 }
 
+void Entity::initialize() {
+   for (auto& comp: components)
+      comp->initialize();
+}
+

@@ -8,6 +8,7 @@ int main() {
 
    std::cout << "Creating game" << std::endl;
    auto game = std::make_unique<Game>("Sprite Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+   game->initialize();
 
    std::cout << "Starting game loop" << std::endl;
    while (game->running()) {

@@ -18,14 +18,13 @@ public:
    void render();
    void destroy();
    bool is_active() const   { return active; };
-
+   void initialize();
    template <typename T, typename... TArgs>
    T& add_component(TArgs&&... args) {
       T* component(new T(std::forward<TArgs>(args)...));
       component->owner = this;
       components.emplace_back(component);
       component_type_map[&typeid(*component)] = component;
-      component->initialize();
       return *component;
    }
 

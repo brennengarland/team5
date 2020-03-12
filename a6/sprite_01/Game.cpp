@@ -90,3 +90,7 @@ void Game::load_level(const int number)
 
    entity_mgr.list_all_entities();
 }
+
+void Game::initialize() {
+   entity_mgr.initialize();
+}

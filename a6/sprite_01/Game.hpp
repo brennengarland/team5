@@ -15,6 +15,7 @@ public:
    void handle_events();
    void update(const float dt);
    void render();
+   void initialize();
 
    void load_level(const int number);
 
