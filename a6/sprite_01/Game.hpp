@@ -3,6 +3,7 @@
 #define __Game_HPP__
 
 #include "SDL2/SDL.h"
+#include "sol/sol.hpp"
 
 class AssetManager;
 
