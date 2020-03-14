@@ -181,7 +181,6 @@ void Game::load_level(const int number)
       std::string entityKind = "";
 
       //transform
-      sol::table entityTransform;
       int position_x = 0;
       int position_y = 0;
       int velocity_x = 0;
@@ -191,7 +190,6 @@ void Game::load_level(const int number)
       int scale = 0;
 
       //sprite
-      sol::table entitySprite;
       std::string texture_id = "";
 
       //get entities kind
@@ -200,11 +198,18 @@ void Game::load_level(const int number)
       }
       entityKind = table.first;
       
+      //Second Table Value
+      if(!table.second.valid()){
+         throw std::runtime_error("Failed to load table value");
+      }
+      auto tableSecond = table.second;
+
+
       //TRANSFORM
-      if(!table.second["transform"].valid()){
+      if(!tableSecond["transform"].valid()){
          throw std::runtime_error("Failed to load entity transform");
       }
-      entityTransform = table.second["transform"];
+      auto entityTransform = tableSecond["transform"];
       //position_x
       if(!entityTransform["position_x"].valid()){
          throw std::runtime_error("Failed to load entity transform position_x");
@@ -243,10 +248,11 @@ void Game::load_level(const int number)
 
 
       //SPRITE
-      if(!table.second["sprite"].valid()){
+      if(!tableSecond["sprite"].valid()){
          throw std::runtime_error("Failed to load entity sprite");
       }
-      entitySprite = table.second["sprite"];
+      auto entitySprite = tableSecond["sprite"];
+      entitySprite = tableSecond["sprite"];
       
       //texture_id
       if(!entitySprite["texture_id"].valid()){
