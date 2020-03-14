@@ -23,6 +23,7 @@ public:
 
    static SDL_Renderer* renderer;
    static AssetManager* asset_manager;
+   static sol::state luaInterpreterState;
 
 private:
    int counter{};
