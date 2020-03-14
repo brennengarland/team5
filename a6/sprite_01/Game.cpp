@@ -162,7 +162,7 @@ void Game::load_level(const int number)
       if(!table.second.valid()){
          throw std::runtime_error("Failed to load a value of an asset in the asset table");
       }
-      assetValue = table.second;
+      assetValue = table.second.as<std::string>();
 
       //add assets
       asset_manager->add_texture(assetKey, assetValue);
