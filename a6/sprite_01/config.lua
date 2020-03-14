@@ -2,7 +2,7 @@
 
 assets = {}
 assets["tank-image"] = "../assets/images/tank-big-right.png"
-assets["chopper-image"] = "../assets/images/chopper-spritesheet"
+assets["chopper-image"] = "../assets/images/chopper-spritesheet.png"
 
 entities = {}
 entities["tank"] = {
