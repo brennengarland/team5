@@ -165,7 +165,7 @@ void Game::load_level(const int number)
       assetValue = table.second.as<std::string>();
 
       //add assets
-      asset_manager->add_texture(assetKey, assetValue);
+      asset_manager->add_texture(assetKey, assetValue.c_str());
 
    }
 
