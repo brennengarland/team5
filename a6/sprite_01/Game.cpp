@@ -156,7 +156,7 @@ void Game::load_level(const int number)
       if(!table.first.valid()){
          throw std::runtime_error("Failed to load a key of an asset in the asset table");
       }
-      assetKey = table.first;
+      assetKey = table.first.as<std::string>();
 
       //asset value
       if(!table.second.valid()){
