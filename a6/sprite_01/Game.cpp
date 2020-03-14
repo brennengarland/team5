@@ -196,7 +196,7 @@ void Game::load_level(const int number)
       if(!table.first.valid()){
          throw std::runtime_error("Failed to load entity kind");
       }
-      entityKind = table.first;
+      entityKind = table.first.as<std::string>();
       
       //Second Table Value
       if(!table.second.valid()){
