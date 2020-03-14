@@ -202,7 +202,7 @@ void Game::load_level(const int number)
       if(!table.second.valid()){
          throw std::runtime_error("Failed to load table value");
       }
-      auto tableSecond = table.second;
+      sol::table tableSecond = table.second;
 
 
       //TRANSFORM
