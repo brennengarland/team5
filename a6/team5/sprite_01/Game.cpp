@@ -261,9 +261,9 @@ void Game::load_level(const int number)
       texture_id = entitySprite["texture_id"];
 
       // create entities and add components to them
-      Entity& tank_entity(entity_mgr.add_entity(entityKind));
-      tank_entity.add_component<TransformComponent>(position_x, position_y, velocity_x, velocity_y, width, height, scale);
-      tank_entity.add_component<SpriteComponent>(texture_id);
+      Entity& new_entity(entity_mgr.add_entity(entityKind));
+      new_entity.add_component<TransformComponent>(position_x, position_y, velocity_x, velocity_y, width, height, scale);
+      new_entity.add_component<SpriteComponent>(texture_id);
 
    }
    entity_mgr.list_all_entities();
