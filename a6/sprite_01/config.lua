@@ -17,7 +17,7 @@ entities["chopper"] = {
                  width = 32, height = 32, scale = 1 },
    sprite =    { texture_id = "chopper-image" }
 }
-entities["chopper"] = {
+entities["chopper2"] = {
    transform = { position_x = 500, position_y= 500,
                  velocity_x = -30,   velocity_y = -30,
                  width = 64, height = 64, scale = 2 },
